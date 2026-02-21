@@ -1,31 +1,53 @@
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Shield, Phone, Info, Route } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { MapPin, Shield, Phone, Info, BarChart3, Lock } from "lucide-react";
+import { motion } from "framer-motion";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function RotaPMESP() {
   const [activeTab, setActiveTab] = useState("inicio");
+  const [isLogged, setIsLogged] = useState(false);
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+
+  const statsData = [
+    { name: "Zona Norte", ocorrencias: 120 },
+    { name: "Zona Sul", ocorrencias: 98 },
+    { name: "Centro", ocorrencias: 150 },
+    { name: "Zona Leste", ocorrencias: 110 },
+  ];
 
   const tabs = [
     { id: "inicio", label: "Início", icon: Info },
-    { id: "rotas", label: "Rotas", icon: Route },
-    { id: "unidades", label: "Unidades", icon: Shield },
+    { id: "mapa", label: "Mapa", icon: MapPin },
+    { id: "estatisticas", label: "Estatísticas", icon: BarChart3 },
+    { id: "admin", label: "Área Admin", icon: Lock },
     { id: "contato", label: "Contato", icon: Phone },
   ];
+
+  const handleLogin = () => {
+    if (user === "admin" && pass === "1234") {
+      setIsLogged(true);
+    } else {
+      alert("Usuário ou senha inválidos");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <header className="bg-blue-900 text-white p-6 shadow-lg">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Rota - Polícia Militar de São Paulo</h1>
-          <span className="text-sm opacity-80">Site Informativo</span>
+      <header className="bg-blue-900 text-white p-6 shadow-xl">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <h1 className="text-3xl font-bold tracking-wide">ROTA - Polícia Militar SP</h1>
+          <Shield size={28} />
         </div>
       </header>
 
-      {/* Navigation Tabs */}
+      {/* Navigation */}
       <nav className="bg-white shadow-md">
-        <div className="max-w-6xl mx-auto flex gap-4 p-4 flex-wrap">
+        <div className="max-w-7xl mx-auto flex gap-4 p-4 flex-wrap">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
@@ -33,7 +55,7 @@ export default function RotaPMESP() {
                 key={tab.id}
                 variant={activeTab === tab.id ? "default" : "outline"}
                 onClick={() => setActiveTab(tab.id)}
-                className="flex items-center gap-2 rounded-2xl"
+                className="rounded-2xl flex items-center gap-2"
               >
                 <Icon size={18} />
                 {tab.label}
@@ -43,95 +65,96 @@ export default function RotaPMESP() {
         </div>
       </nav>
 
-      {/* Content */}
-      <main className="max-w-6xl mx-auto p-6">
+      <main className="max-w-7xl mx-auto p-8">
         {activeTab === "inicio" && (
-          <Card className="rounded-2xl shadow-xl">
-            <CardContent className="p-6 space-y-4">
-              <h2 className="text-xl font-semibold">Sobre a ROTA</h2>
-              <p>
-                A Rondas Ostensivas Tobias de Aguiar (ROTA) é uma unidade de
-                policiamento ostensivo da Polícia Militar do Estado de São
-                Paulo, atuando principalmente no patrulhamento tático e apoio
-                operacional.
-              </p>
-              <p>
-                Este site apresenta informações institucionais e rotas de
-                atuação de forma ilustrativa.
-              </p>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <Card className="rounded-2xl shadow-2xl">
+              <CardContent className="p-8 space-y-4">
+                <h2 className="text-2xl font-semibold">Sobre a Unidade</h2>
+                <p>
+                  A Rondas Ostensivas Tobias de Aguiar (ROTA) é unidade especializada
+                  da Polícia Militar do Estado de São Paulo, atuando em apoio tático
+                  e operações estratégicas.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "mapa" && (
+          <Card className="rounded-2xl shadow-2xl">
+            <CardContent className="p-6">
+              <h2 className="text-xl font-semibold mb-4">Mapa Interativo</h2>
+              <iframe
+                title="Mapa São Paulo"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-46.8%2C-23.7%2C-46.3%2C-23.3&layer=mapnik"
+                className="w-full h-[500px] rounded-2xl"
+              ></iframe>
             </CardContent>
           </Card>
         )}
 
-        {activeTab === "rotas" && (
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card className="rounded-2xl shadow-xl">
-              <CardContent className="p-6 space-y-3">
-                <h3 className="text-lg font-semibold flex items-center gap-2">
-                  <MapPin size={18} /> Zona Norte
-                </h3>
-                <p>Patrulhamento estratégico nas principais vias da região norte da capital.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-2xl shadow-xl">
-              <CardContent className="p-6 space-y-3">
-                <h3 className="text-lg font-semibold flex items-center gap-2">
-                  <MapPin size={18} /> Zona Sul
-                </h3>
-                <p>Atuação em áreas urbanas com foco em segurança preventiva.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-2xl shadow-xl">
-              <CardContent className="p-6 space-y-3">
-                <h3 className="text-lg font-semibold flex items-center gap-2">
-                  <MapPin size={18} /> Centro
-                </h3>
-                <p>Monitoramento de áreas comerciais e históricas da cidade.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-2xl shadow-xl">
-              <CardContent className="p-6 space-y-3">
-                <h3 className="text-lg font-semibold flex items-center gap-2">
-                  <MapPin size={18} /> Zona Leste
-                </h3>
-                <p>Policiamento tático com apoio às unidades territoriais.</p>
-              </CardContent>
-            </Card>
-          </div>
+        {activeTab === "estatisticas" && (
+          <Card className="rounded-2xl shadow-2xl">
+            <CardContent className="p-6">
+              <h2 className="text-xl font-semibold mb-6">Painel de Estatísticas</h2>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={statsData}>
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="ocorrencias" />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
         )}
 
-        {activeTab === "unidades" && (
-          <Card className="rounded-2xl shadow-xl">
+        {activeTab === "admin" && (
+          <Card className="rounded-2xl shadow-2xl max-w-md mx-auto">
             <CardContent className="p-6 space-y-4">
-              <h2 className="text-xl font-semibold">Unidades Operacionais</h2>
-              <ul className="list-disc list-inside space-y-2">
-                <li>Batalhão Tobias de Aguiar</li>
-                <li>Companhia de Patrulhamento Tático</li>
-                <li>Equipe de Apoio Operacional</li>
-                <li>Centro de Treinamento Especializado</li>
-              </ul>
+              {!isLogged ? (
+                <>
+                  <h2 className="text-xl font-semibold">Login Administrativo</h2>
+                  <Input
+                    placeholder="Usuário"
+                    value={user}
+                    onChange={(e) => setUser(e.target.value)}
+                  />
+                  <Input
+                    type="password"
+                    placeholder="Senha"
+                    value={pass}
+                    onChange={(e) => setPass(e.target.value)}
+                  />
+                  <Button onClick={handleLogin} className="w-full rounded-2xl">
+                    Entrar
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <h2 className="text-xl font-semibold">Painel Administrativo</h2>
+                  <p>Acesso autorizado. Área restrita.</p>
+                </>
+              )}
             </CardContent>
           </Card>
         )}
 
         {activeTab === "contato" && (
-          <Card className="rounded-2xl shadow-xl">
-            <CardContent className="p-6 space-y-4">
+          <Card className="rounded-2xl shadow-2xl">
+            <CardContent className="p-6 space-y-3">
               <h2 className="text-xl font-semibold">Contato</h2>
               <p>Emergência: 190</p>
-              <p>Site Oficial da Polícia Militar: www.policiamilitar.sp.gov.br</p>
-              <p>Endereço institucional: São Paulo - SP</p>
+              <p>Estado: São Paulo - SP</p>
+              <p>Site institucional oficial disponível nos canais públicos do governo.</p>
             </CardContent>
           </Card>
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-blue-900 text-white text-center p-4 mt-10">
-        <p>© 2026 Polícia Militar do Estado de São Paulo - Site Informativo</p>
+      <footer className="bg-blue-900 text-white text-center p-6 mt-12">
+        <p>© 2026 Polícia Militar do Estado de São Paulo - Site Demonstrativo</p>
       </footer>
     </div>
   );
