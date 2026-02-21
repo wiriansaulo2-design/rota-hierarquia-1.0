@@ -1,11 +1,43 @@
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .hero {
+    position: relative;
     height: 100vh;
-    background-image: url("imag/rota_54.png");
+    background-image: url("./rota_54.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Camada escura por cima da imagem */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Conteúdo acima do overlay */
+.conteudo {
+    position: relative;
+    color: white;
+    z-index: 2;
+}
+
+.conteudo h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.conteudo p {
+    margin-top: 10px;
+    font-size: 18px;
 }
