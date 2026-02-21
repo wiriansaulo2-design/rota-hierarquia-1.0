@@ -1,3 +1,4 @@
+/* ================= MENU ATIVO ================= */
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
 
@@ -19,10 +20,23 @@ window.addEventListener("scroll", () => {
     });
 });
 
-/* MENU MOBILE */
+/* ================= MENU MOBILE ================= */
 const toggle = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu");
 
 toggle.addEventListener("click", () => {
     menu.classList.toggle("show");
+});
+
+/* ================= ANIMAÇÃO DAS SEÇÕES ================= */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".secao").forEach(secao => {
+    observer.observe(secao);
 });
