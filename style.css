@@ -1,35 +1,148 @@
-body { margin:0; background:#000; color:#fff; font-family:sans-serif; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
+body {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: #f1c40f;
+}
+
+.navbar nav a {
+  color: #ccc;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+
+.navbar nav a:hover {
+  color: #f1c40f;
+}
+
+/* HERO */
 .hero {
-  position:relative;
-  height:100vh;
-  overflow:hidden;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slides {
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 .slide {
-  position:absolute;
-  width:100%;
-  height:100%;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
   transition: opacity 2s ease-in-out;
 }
 
 .slide.active {
-  opacity:1;
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), #0a0a0a);
+  z-index: 1;
 }
 
 .hero-content {
-  position:absolute;
-  bottom:30%;
-  left:50%;
-  transform:translateX(-50%);
-  text-align:center;
-  z-index:2;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  top: 40%;
+  transform: translateY(-50%);
 }
 
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero h1 span {
+  color: #f1c40f;
+}
+
+.hero p {
+  margin-top: 15px;
+  color: #ccc;
+}
+
+/* STATS */
 .stats {
-  padding:100px;
-  text-align:center;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.stats h2 {
+  margin-bottom: 40px;
+  font-size: 32px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #111;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #222;
+  transition: 0.3s;
+}
+
+.card:hover {
+  border-color: #f1c40f;
+  transform: translateY(-5px);
+}
+
+.card p {
+  margin-top: 10px;
+  font-size: 24px;
+  color: #f1c40f;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero-content {
+    top: 50%;
+  }
 }
