@@ -23,7 +23,7 @@ export default function RotaPMESP() {
     { id: "inicio", label: "Início", icon: Info },
     { id: "mapa", label: "Mapa", icon: MapPin },
     { id: "estatisticas", label: "Estatísticas", icon: BarChart3 },
-    { id: "admin", label: "Área Admin", icon: Lock },
+    { id: "admin", label: "Área Restrita", icon: Lock },
     { id: "contato", label: "Contato", icon: Phone },
   ];
 
@@ -31,31 +31,40 @@ export default function RotaPMESP() {
     if (user === "admin" && pass === "1234") {
       setIsLogged(true);
     } else {
-      alert("Usuário ou senha inválidos");
+      alert("Credenciais inválidas");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-green-900 to-black text-gray-200">
       {/* Header */}
-      <header className="bg-blue-900 text-white p-6 shadow-xl">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <h1 className="text-3xl font-bold tracking-wide">ROTA - Polícia Militar SP</h1>
-          <Shield size={28} />
+      <header className="bg-black border-b-4 border-emerald-700 shadow-2xl">
+        <div className="max-w-7xl mx-auto flex justify-between items-center p-6">
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-widest text-emerald-400">
+              ROTA - POLÍCIA MILITAR SP
+            </h1>
+            <p className="text-xs tracking-[0.3em] text-gray-400">
+              SISTEMA OPERACIONAL INSTITUCIONAL
+            </p>
+          </div>
+          <Shield size={32} className="text-emerald-500" />
         </div>
       </header>
 
       {/* Navigation */}
-      <nav className="bg-white shadow-md">
+      <nav className="bg-black/80 border-b border-emerald-800">
         <div className="max-w-7xl mx-auto flex gap-4 p-4 flex-wrap">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
               <Button
                 key={tab.id}
-                variant={activeTab === tab.id ? "default" : "outline"}
+                variant="outline"
                 onClick={() => setActiveTab(tab.id)}
-                className="rounded-2xl flex items-center gap-2"
+                className={`rounded-2xl flex items-center gap-2 border-emerald-600 text-emerald-400 hover:bg-emerald-800 hover:text-white transition-all ${
+                  activeTab === tab.id ? "bg-emerald-700 text-white" : ""
+                }`}
               >
                 <Icon size={18} />
                 {tab.label}
@@ -68,13 +77,15 @@ export default function RotaPMESP() {
       <main className="max-w-7xl mx-auto p-8">
         {activeTab === "inicio" && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <Card className="rounded-2xl shadow-2xl">
+            <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl">
               <CardContent className="p-8 space-y-4">
-                <h2 className="text-2xl font-semibold">Sobre a Unidade</h2>
-                <p>
-                  A Rondas Ostensivas Tobias de Aguiar (ROTA) é unidade especializada
-                  da Polícia Militar do Estado de São Paulo, atuando em apoio tático
-                  e operações estratégicas.
+                <h2 className="text-2xl font-bold text-emerald-400 tracking-wide">
+                  SOBRE A UNIDADE
+                </h2>
+                <p className="text-gray-300">
+                  Unidade especializada de policiamento tático com atuação estratégica
+                  em todo o Estado de São Paulo. Sistema demonstrativo com layout
+                  institucional militar.
                 </p>
               </CardContent>
             </Card>
@@ -82,28 +93,32 @@ export default function RotaPMESP() {
         )}
 
         {activeTab === "mapa" && (
-          <Card className="rounded-2xl shadow-2xl">
+          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl">
             <CardContent className="p-6">
-              <h2 className="text-xl font-semibold mb-4">Mapa Interativo</h2>
+              <h2 className="text-xl font-bold text-emerald-400 mb-4 tracking-wide">
+                MAPA OPERACIONAL
+              </h2>
               <iframe
                 title="Mapa São Paulo"
                 src="https://www.openstreetmap.org/export/embed.html?bbox=-46.8%2C-23.7%2C-46.3%2C-23.3&layer=mapnik"
-                className="w-full h-[500px] rounded-2xl"
+                className="w-full h-[500px] rounded-2xl border border-emerald-700"
               ></iframe>
             </CardContent>
           </Card>
         )}
 
         {activeTab === "estatisticas" && (
-          <Card className="rounded-2xl shadow-2xl">
+          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl">
             <CardContent className="p-6">
-              <h2 className="text-xl font-semibold mb-6">Painel de Estatísticas</h2>
+              <h2 className="text-xl font-bold text-emerald-400 mb-6 tracking-wide">
+                PAINEL ESTRATÉGICO
+              </h2>
               <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={statsData}>
-                  <XAxis dataKey="name" />
-                  <YAxis />
+                  <XAxis dataKey="name" stroke="#10b981" />
+                  <YAxis stroke="#10b981" />
                   <Tooltip />
-                  <Bar dataKey="ocorrencias" />
+                  <Bar dataKey="ocorrencias" fill="#10b981" />
                 </BarChart>
               </ResponsiveContainer>
             </CardContent>
@@ -111,30 +126,39 @@ export default function RotaPMESP() {
         )}
 
         {activeTab === "admin" && (
-          <Card className="rounded-2xl shadow-2xl max-w-md mx-auto">
+          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl max-w-md mx-auto">
             <CardContent className="p-6 space-y-4">
               {!isLogged ? (
                 <>
-                  <h2 className="text-xl font-semibold">Login Administrativo</h2>
+                  <h2 className="text-xl font-bold text-emerald-400 tracking-wide">
+                    ÁREA RESTRITA
+                  </h2>
                   <Input
                     placeholder="Usuário"
                     value={user}
                     onChange={(e) => setUser(e.target.value)}
+                    className="bg-black border-emerald-700 text-white"
                   />
                   <Input
                     type="password"
                     placeholder="Senha"
                     value={pass}
                     onChange={(e) => setPass(e.target.value)}
+                    className="bg-black border-emerald-700 text-white"
                   />
-                  <Button onClick={handleLogin} className="w-full rounded-2xl">
-                    Entrar
+                  <Button
+                    onClick={handleLogin}
+                    className="w-full rounded-2xl bg-emerald-700 hover:bg-emerald-600"
+                  >
+                    AUTENTICAR
                   </Button>
                 </>
               ) : (
                 <>
-                  <h2 className="text-xl font-semibold">Painel Administrativo</h2>
-                  <p>Acesso autorizado. Área restrita.</p>
+                  <h2 className="text-xl font-bold text-emerald-400">
+                    ACESSO AUTORIZADO
+                  </h2>
+                  <p className="text-gray-300">Sistema administrativo ativo.</p>
                 </>
               )}
             </CardContent>
@@ -142,19 +166,23 @@ export default function RotaPMESP() {
         )}
 
         {activeTab === "contato" && (
-          <Card className="rounded-2xl shadow-2xl">
+          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl">
             <CardContent className="p-6 space-y-3">
-              <h2 className="text-xl font-semibold">Contato</h2>
+              <h2 className="text-xl font-bold text-emerald-400 tracking-wide">
+                CONTATO INSTITUCIONAL
+              </h2>
               <p>Emergência: 190</p>
               <p>Estado: São Paulo - SP</p>
-              <p>Site institucional oficial disponível nos canais públicos do governo.</p>
+              <p>Portal oficial disponível nos canais governamentais.</p>
             </CardContent>
           </Card>
         )}
       </main>
 
-      <footer className="bg-blue-900 text-white text-center p-6 mt-12">
-        <p>© 2026 Polícia Militar do Estado de São Paulo - Site Demonstrativo</p>
+      <footer className="bg-black border-t border-emerald-800 text-center p-6 text-gray-400">
+        <p className="tracking-widest text-xs">
+          SISTEMA DEMONSTRATIVO • POLÍCIA MILITAR DO ESTADO DE SÃO PAULO • 2026
+        </p>
       </footer>
     </div>
   );
