@@ -1,25 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Meu App Firebase</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Membros</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>🔥 Meu App Firebase</h1>
+<header>
+<h1>Painel de Membros</h1>
+</header>
 
-    <input type="text" id="mensagem" placeholder="Digite algo">
-    <button onclick="salvar()">Salvar no Firebase</button>
+<nav>
+<button onclick="abrirAba('recrutas')">Recrutas</button>
+<button onclick="abrirAba('soldados')">Soldados</button>
+<button onclick="abrirAba('cabos')">Cabos</button>
+<button onclick="abrirAba('sargentos')">Sargentos</button>
+<button onclick="abrirAba('tenentes')">Tenentes</button>
+<button onclick="abrirAba('capitaes')">Capitães</button>
+<button onclick="abrirAba('coroneis')">Coronéis</button>
+<button onclick="abrirAba('geral')">Generais</button>
+</nav>
 
-    <ul id="lista"></ul>
-  </div>
+<main>
 
-  <!-- Firebase CDN -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<div id="recrutas" class="aba ativa">
+<h2>Recrutas</h2>
+<ul id="listaRecrutas"></ul>
+</div>
 
-  <script src="script.js"></script>
+<div id="soldados" class="aba">
+<h2>Soldados</h2>
+<ul id="listaSoldados"></ul>
+</div>
+
+<div id="cabos" class="aba">
+<h2>Cabos</h2>
+<ul id="listaCabos"></ul>
+</div>
+
+<div id="sargentos" class="aba">
+<h2>Sargentos</h2>
+<ul id="listaSargentos"></ul>
+</div>
+
+<div id="tenentes" class="aba">
+<h2>Tenentes</h2>
+<ul id="listaTenentes"></ul>
+</div>
+
+<div id="capitaes" class="aba">
+<h2>Capitães</h2>
+<ul id="listaCapitaes"></ul>
+</div>
+
+<div id="coroneis" class="aba">
+<h2>Coronéis</h2>
+<ul id="listaCoroneis"></ul>
+</div>
+
+<div id="geral" class="aba">
+<h2>Generais</h2>
+<ul id="listaGenerais"></ul>
+</div>
+
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
