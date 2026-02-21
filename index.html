@@ -1,3 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROTA - Rondas Ostensivas Tobias de Aguiar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Sirene realista -->
+<div class="sirene-realista"></div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">ROTA</div>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+    <nav>
+        <ul class="menu" id="menu">
+            <li><a href="#inicio" class="nav-link active">Início</a></li>
+            <li><a href="#historia" class="nav-link">História</a></li>
+            <li><a href="#operacoes" class="nav-link">Operações</a></li>
+            <li><a href="#estatisticas" class="nav-link">Estatísticas</a></li>
+            <li><a href="#galeria" class="nav-link">Galeria</a></li>
+            <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO ANIMADO -->
+<section id="inicio" class="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="overlay"></div>
+    <div class="conteudo">
+        <h1>Rondas Ostensivas <span>Tobias de Aguiar</span></h1>
+        <p>Dignidade acima de tudo.</p>
+        <a href="#operacoes" class="btn-operacional">Ver Operações</a>
+    </div>
+</section>
+
 <!-- HISTÓRIA -->
 <section id="historia" class="secao">
     <h2>História</h2>
@@ -59,3 +99,60 @@
         mantendo o compromisso de proteger a sociedade com disciplina e eficiência.
     </p>
 </section>
+
+<!-- OPERAÇÕES -->
+<section id="operacoes" class="secao escura">
+    <h2>Operações</h2>
+    <p>Patrulhamento tático, combate ao crime organizado e ações de resposta rápida em situações críticas.</p>
+</section>
+
+<!-- ESTATÍSTICAS -->
+<section id="estatisticas" class="secao">
+    <h2>Estatísticas</h2>
+    <div class="stats-container">
+        <div class="stat">
+            <canvas class="circular-chart" data-percentage="90"></canvas>
+            <p>Operações Realizadas</p>
+        </div>
+        <div class="stat">
+            <canvas class="circular-chart" data-percentage="75"></canvas>
+            <p>Prisões Efetuadas</p>
+        </div>
+        <div class="stat">
+            <canvas class="circular-chart" data-percentage="85"></canvas>
+            <p>Patrulhamentos</p>
+        </div>
+    </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria" class="secao escura">
+    <h2>Galeria</h2>
+    <div class="gallery">
+        <img src="ROTA_98.png" alt="Operação 1">
+        <img src="rota_21_lucca.png" alt="Operação 2">
+        <img src="ROTA_98.png" alt="Treinamento">
+        <img src="rota_21_lucca.png" alt="Veículo">
+    </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <span id="modal-close">&times;</span>
+    <img class="modal-content" id="modal-img">
+</div>
+
+<!-- CONTATO -->
+<section id="contato" class="secao">
+    <h2>Contato</h2>
+    <p>Para informações institucionais, utilize os canais oficiais da Polícia Militar do Estado de São Paulo.</p>
+</section>
+
+<!-- RODAPÉ -->
+<footer class="rodape">
+    <p>© 2026 Polícia Militar do Estado de São Paulo - ROTA | Todos os direitos reservados</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
