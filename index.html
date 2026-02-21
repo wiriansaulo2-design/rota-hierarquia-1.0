@@ -36,9 +36,15 @@ export default function RotaPMESP() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-green-900 to-black text-gray-200">
+    <div className="min-h-screen text-gray-200 relative overflow-hidden">
+      {/* Camouflage Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="w-full h-full bg-[radial-gradient(circle_at_20%_30%,#1f2937_0%,transparent_40%),radial-gradient(circle_at_70%_60%,#14532d_0%,transparent_45%),radial-gradient(circle_at_40%_80%,#052e16_0%,transparent_40%),radial-gradient(circle_at_80%_20%,#3f6212_0%,transparent_35%),#000000]"></div>
+        <div className="absolute inset-0 bg-black/70"></div>
+      </div>
+
       {/* Header */}
-      <header className="bg-black border-b-4 border-emerald-700 shadow-2xl">
+      <header className="bg-black border-b-4 border-emerald-700 shadow-2xl relative z-10">
         <div className="max-w-7xl mx-auto flex justify-between items-center p-6">
           <div>
             <h1 className="text-3xl font-extrabold tracking-widest text-emerald-400">
@@ -53,7 +59,7 @@ export default function RotaPMESP() {
       </header>
 
       {/* Navigation */}
-      <nav className="bg-black/80 border-b border-emerald-800">
+      <nav className="bg-black/80 border-b border-emerald-800 relative z-10">
         <div className="max-w-7xl mx-auto flex gap-4 p-4 flex-wrap">
           {tabs.map((tab) => {
             const Icon = tab.icon;
@@ -74,10 +80,10 @@ export default function RotaPMESP() {
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto p-8">
+      <main className="max-w-7xl mx-auto p-8 relative z-10">
         {activeTab === "inicio" && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl">
+            <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl backdrop-blur-sm">
               <CardContent className="p-8 space-y-4">
                 <h2 className="text-2xl font-bold text-emerald-400 tracking-wide">
                   SOBRE A UNIDADE
@@ -93,7 +99,7 @@ export default function RotaPMESP() {
         )}
 
         {activeTab === "mapa" && (
-          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl">
+          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl backdrop-blur-sm">
             <CardContent className="p-6">
               <h2 className="text-xl font-bold text-emerald-400 mb-4 tracking-wide">
                 MAPA OPERACIONAL
@@ -108,7 +114,7 @@ export default function RotaPMESP() {
         )}
 
         {activeTab === "estatisticas" && (
-          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl">
+          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl backdrop-blur-sm">
             <CardContent className="p-6">
               <h2 className="text-xl font-bold text-emerald-400 mb-6 tracking-wide">
                 PAINEL ESTRATÉGICO
@@ -126,7 +132,7 @@ export default function RotaPMESP() {
         )}
 
         {activeTab === "admin" && (
-          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl max-w-md mx-auto">
+          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl max-w-md mx-auto backdrop-blur-sm">
             <CardContent className="p-6 space-y-4">
               {!isLogged ? (
                 <>
@@ -166,7 +172,7 @@ export default function RotaPMESP() {
         )}
 
         {activeTab === "contato" && (
-          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl">
+          <Card className="rounded-2xl bg-black/70 border border-emerald-800 shadow-2xl backdrop-blur-sm">
             <CardContent className="p-6 space-y-3">
               <h2 className="text-xl font-bold text-emerald-400 tracking-wide">
                 CONTATO INSTITUCIONAL
@@ -179,7 +185,7 @@ export default function RotaPMESP() {
         )}
       </main>
 
-      <footer className="bg-black border-t border-emerald-800 text-center p-6 text-gray-400">
+      <footer className="bg-black border-t border-emerald-800 text-center p-6 text-gray-400 relative z-10">
         <p className="tracking-widest text-xs">
           SISTEMA DEMONSTRATIVO • POLÍCIA MILITAR DO ESTADO DE SÃO PAULO • 2026
         </p>
