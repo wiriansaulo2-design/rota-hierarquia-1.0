@@ -9,7 +9,7 @@
 
 <body>
 
-<!-- Sirene superior realista -->
+<!-- Sirene realista -->
 <div class="sirene-realista"></div>
 
 <!-- NAVBAR -->
@@ -28,8 +28,9 @@
     </nav>
 </header>
 
-<!-- HERO -->
+<!-- HERO COM FUNDO NOTURNO ANIMADO -->
 <section id="inicio" class="hero">
+    <canvas id="heroCanvas"></canvas>
     <div class="overlay"></div>
     <div class="conteudo">
         <h1>Rondas Ostensivas <span>Tobias de Aguiar</span></h1>
@@ -50,26 +51,26 @@
     <p>Patrulhamento tático, combate ao crime organizado e ações de resposta rápida em situações críticas.</p>
 </section>
 
-<!-- ESTATÍSTICAS -->
+<!-- ESTATÍSTICAS COM GRÁFICOS CIRCULARES -->
 <section id="estatisticas" class="secao">
     <h2>Estatísticas</h2>
     <div class="stats-container">
         <div class="stat">
-            <h3 class="stat-number" data-number="1200">0</h3>
+            <canvas class="circular-chart" data-percentage="90"></canvas>
             <p>Operações Realizadas</p>
         </div>
         <div class="stat">
-            <h3 class="stat-number" data-number="350">0</h3>
+            <canvas class="circular-chart" data-percentage="75"></canvas>
             <p>Prisões Efetuadas</p>
         </div>
         <div class="stat">
-            <h3 class="stat-number" data-number="5000">0</h3>
+            <canvas class="circular-chart" data-percentage="85"></canvas>
             <p>Patrulhamentos</p>
         </div>
     </div>
 </section>
 
-<!-- GALERIA -->
+<!-- GALERIA COM MODAL -->
 <section id="galeria" class="secao escura">
     <h2>Galeria</h2>
     <div class="gallery">
@@ -79,6 +80,12 @@
         <img src="rota_54.png" alt="Veículo">
     </div>
 </section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <span id="modal-close">&times;</span>
+    <img class="modal-content" id="modal-img">
+</div>
 
 <!-- CONTATO -->
 <section id="contato" class="secao">
