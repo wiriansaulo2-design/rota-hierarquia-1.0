@@ -1,3 +1,4 @@
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -7,63 +8,97 @@
 body {
     background-color: #111;
     font-family: 'Arial Black', sans-serif;
+    color: #c0c0c0;
 }
 
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.85);
+    border-bottom: 2px solid #8b0000;
+    z-index: 999;
+}
+
+.logo {
+    color: #8b0000;
+    font-size: 24px;
+    letter-spacing: 3px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #c0c0c0;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.menu li a:hover {
+    color: #8b0000;
+}
+
+/* HERO */
 .hero {
     position: relative;
     height: 100vh;
     background-image: url("./rota_54.png");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding-top: 100px;
 }
 
-/* Camada escura forte */
 .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.85),
-        rgba(0, 0, 0, 0.6)
-    );
+    background: rgba(0,0,0,0.7);
 }
 
-/* Conteúdo */
 .conteudo {
     position: relative;
-    color: #c0c0c0;
     z-index: 2;
     text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
 .conteudo h1 {
-    font-size: 55px;
-    font-weight: 900;
+    font-size: 50px;
 }
 
 .conteudo span {
-    color: #8b0000; /* vermelho sirene */
+    color: #8b0000;
 }
 
 .conteudo p {
     margin-top: 15px;
-    font-size: 18px;
-    color: #2f3e2f; /* verde militar */
-    font-weight: bold;
+    color: #2f3e2f;
 }
 
-/* Linha decorativa estilo militar */
-.conteudo::after {
-    content: "";
-    display: block;
-    width: 120px;
-    height: 3px;
-    background: #8b0000;
-    margin: 20px auto 0;
+/* SEÇÕES */
+.secao {
+    padding: 120px 60px;
+    min-height: 100vh;
+}
+
+.secao h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #8b0000;
+}
+
+.escura {
+    background-color: #1c1c1c;
 }
