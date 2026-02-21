@@ -1,17 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>ROTA Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROTA - Rondas Ostensivas Tobias de Aguiar</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-    <h1>Rondas Ostensivas <span>Tobias de Aguiar</span></h1>
+<header class="navbar">
+  <div class="logo">ROTA <span>Tobias de Aguiar</span></div>
+  <nav>
+    <a href="#">Início</a>
+    <a href="#">Operações</a>
+    <a href="#">Estatísticas</a>
+    <a href="#">Contato</a>
+  </nav>
 </header>
 
-<section class="cards" id="stats"></section>
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Rondas Ostensivas Tobias de Aguiar</h1>
+    <p>Compromisso, disciplina e excelência operacional.</p>
+    <button class="btn">Ver Estatísticas</button>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="card">
+    <h2 data-target="254">0</h2>
+    <p>Ocorrências</p>
+  </div>
+  <div class="card">
+    <h2 data-target="91">0</h2>
+    <p>Prisões</p>
+  </div>
+  <div class="card">
+    <h2 data-target="320">0</h2>
+    <p>Apreensões</p>
+  </div>
+  <div class="card">
+    <h2 data-target="8183">0</h2>
+    <p>Munições</p>
+  </div>
+</section>
+
+<section class="gallery">
+  <h2>ROTA em Ação</h2>
+  <div class="slider">
+    <img src="images/ROTA_98.jpg" class="slide active">
+    <img src="images/rota_54.jpg" class="slide">
+    <img src="images/rota_21_lucca.jpg" class="slide">
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 ROTA - Todos os direitos reservados.</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
