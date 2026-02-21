@@ -1,46 +1,128 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ROTA | Oficial</title>
-
-<link rel="stylesheet" href="./style.css">
-<script defer src="./script.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<title>Hierarquia - Resumo do Efetivo</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
 
-<header class="navbar">
-  <div class="logo">ROTA <span>Tobias de Aguiar</span></div>
-  <nav>
-    <a href="index.html">Início</a>
-    <a href="login.html">Painel</a>
-  </nav>
-</header>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
 
-<section class="hero">
-  <div class="overlay"></div>
-  <div class="hero-content fade-up">
-    <h1>Rondas Ostensivas Tobias de Aguiar</h1>
-    <p>Compromisso, disciplina e excelência operacional.</p>
-    <a href="login.html" class="btn">Acessar Painel</a>
-  </div>
-</section>
+<div class="max-w-7xl mx-auto px-6 py-10">
 
-<section class="gallery">
-  <h2 class="fade-up">ROTA em Ação</h2>
-  <div class="slider">
-    <img src="./images/ROTA_98.jpg" class="slide active">
-    <img src="./images/rota_54.jpg" class="slide">
-    <img src="./images/rota_21_lucca.jpg" class="slide">
-  </div>
-</section>
+    <!-- Título -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold tracking-wide">Resumo Geral do Efetivo</h1>
+        <p class="text-slate-400">Visualização da hierarquia organizacional</p>
+    </div>
 
-<footer>
-  © 2026 ROTA - Todos os direitos reservados.
-</footer>
+    <!-- Busca -->
+    <div class="flex gap-4 mb-8">
+        <input type="text" placeholder="Buscar por nome ou ID na hierarquia"
+        class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+        <button class="bg-amber-500 text-black px-6 py-3 rounded-xl font-semibold hover:bg-amber-400">
+            Filtrar categoria
+        </button>
+    </div>
+
+    <!-- Cards resumo -->
+    <div class="grid md:grid-cols-4 gap-5 mb-10">
+        <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800">
+            <p class="text-sm text-slate-400">Total Geral</p>
+            <p class="text-3xl font-bold">45</p>
+        </div>
+
+        <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800">
+            <p class="text-sm text-slate-400">Ativos</p>
+            <p class="text-3xl font-bold text-green-400">45</p>
+        </div>
+
+        <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800">
+            <p class="text-sm text-slate-400">Ausentes</p>
+            <p class="text-3xl font-bold text-yellow-400">0</p>
+        </div>
+
+        <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800">
+            <p class="text-sm text-slate-400">Afastados</p>
+            <p class="text-3xl font-bold text-red-400">0</p>
+        </div>
+    </div>
+
+    <!-- Tabela reutilizável -->
+    <script>
+        function criarTabela(titulo, dados) {
+            let linhas = dados.map(p => `
+                <tr class="border-t border-slate-800 hover:bg-slate-900/60">
+                    <td class="px-4 py-3">${p.id}</td>
+                    <td class="px-4 py-3">${p.nome}</td>
+                    <td class="px-4 py-3">${p.patente}</td>
+                    <td class="px-4 py-3">${p.funcao}</td>
+                    <td class="px-4 py-3">${p.entrada}</td>
+                    <td class="px-4 py-3">${p.promocao}</td>
+                    <td class="px-4 py-3">
+                        <span class="bg-slate-800 px-2 py-1 rounded text-xs">Cursos ${p.cursos}</span>
+                        <span class="bg-slate-800 px-2 py-1 rounded text-xs">Láureas ${p.laureas}</span>
+                    </td>
+                    <td class="px-4 py-3">
+                        <span class="bg-green-600 px-3 py-1 rounded-full text-xs font-semibold">ATIVO</span>
+                    </td>
+                </tr>
+            `).join('');
+
+            return `
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl mb-8 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-slate-800 font-semibold text-lg">
+                        ${titulo}
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-slate-950 text-slate-400">
+                                <tr>
+                                    <th class="px-4 py-3 text-left">ID</th>
+                                    <th class="px-4 py-3 text-left">Nome</th>
+                                    <th class="px-4 py-3 text-left">Patente</th>
+                                    <th class="px-4 py-3 text-left">Função</th>
+                                    <th class="px-4 py-3 text-left">Entrada</th>
+                                    <th class="px-4 py-3 text-left">Última promoção</th>
+                                    <th class="px-4 py-3 text-left">Cursos / Láureas</th>
+                                    <th class="px-4 py-3 text-left">Situação</th>
+                                </tr>
+                            </thead>
+                            <tbody>${linhas}</tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+
+    <!-- Conteúdo tabelas -->
+    <div id="tabelas"></div>
+
+</div>
+
+<script>
+const oficiaisSuperiores = [
+    { id: 286, nome: "Dexter Rodrigues", patente: "Tenente Coronel", funcao: "Comandante", entrada: "11-05-2025", promocao: "21-07-2025", cursos: 12, laureas: 4 },
+    { id: 1162, nome: "Peixoto Goria", patente: "Major", funcao: "Subcomandante", entrada: "24-06-2025", promocao: "19-08-2025", cursos: 13, laureas: 3 }
+];
+
+const oficiaisIntermediarios = [
+    { id: 418, nome: "Cesar Bomba", patente: "Capitão", funcao: "Comandante de Companhia", entrada: "--", promocao: "20-11-2025", cursos: 9, laureas: 2 }
+];
+
+const oficiaisSubalternos = [
+    { id: 224, nome: "Guilherme Derrite", patente: "1º Tenente", funcao: "ADM", entrada: "12-01-2025", promocao: "08-02-2026", cursos: 9, laureas: 3 }
+];
+
+const container = document.getElementById("tabelas");
+container.innerHTML += criarTabela("Oficiais Superiores", oficiaisSuperiores);
+container.innerHTML += criarTabela("Oficiais Intermediários", oficiaisIntermediarios);
+container.innerHTML += criarTabela("Oficiais Subalternos", oficiaisSubalternos);
+</script>
 
 </body>
 </html>
