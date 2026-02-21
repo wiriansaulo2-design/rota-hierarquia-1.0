@@ -1,37 +1,138 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Sistema Militar</title>
-<link rel="stylesheet" href="style.css">
-</head>
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { MapPin, Shield, Phone, Info, Route } from "lucide-react";
 
-<body>
+export default function RotaPMESP() {
+  const [activeTab, setActiveTab] = useState("inicio");
 
-<header>
-<h1>🪖 Sistema de Comando</h1>
-<button onclick="loginGoogle()">Login Google</button>
-<button onclick="logout()">Sair</button>
-</header>
+  const tabs = [
+    { id: "inicio", label: "Início", icon: Info },
+    { id: "rotas", label: "Rotas", icon: Route },
+    { id: "unidades", label: "Unidades", icon: Shield },
+    { id: "contato", label: "Contato", icon: Phone },
+  ];
 
-<nav>
-<button onclick="mostrar('dashboard')">Dashboard</button>
-<button onclick="mostrar('hierarquia')">Hierarquia</button>
-<button onclick="mostrar('ordens')">Ordens</button>
-<button onclick="mostrar('admin')">Admin</button>
-</nav>
+  return (
+    <div className="min-h-screen bg-gray-100">
+      {/* Header */}
+      <header className="bg-blue-900 text-white p-6 shadow-lg">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <h1 className="text-2xl font-bold">Rota - Polícia Militar de São Paulo</h1>
+          <span className="text-sm opacity-80">Site Informativo</span>
+        </div>
+      </header>
 
-<section id="dashboard" class="pagina">
-<h2>Centro de Comando</h2>
-<div id="efetivo"></div>
-</section>
+      {/* Navigation Tabs */}
+      <nav className="bg-white shadow-md">
+        <div className="max-w-6xl mx-auto flex gap-4 p-4 flex-wrap">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            return (
+              <Button
+                key={tab.id}
+                variant={activeTab === tab.id ? "default" : "outline"}
+                onClick={() => setActiveTab(tab.id)}
+                className="flex items-center gap-2 rounded-2xl"
+              >
+                <Icon size={18} />
+                {tab.label}
+              </Button>
+            );
+          })}
+        </div>
+      </nav>
 
-<section id="hierarquia" class="pagina">
-<h2>Cadeia de Comando</h2>
-<div id="listaHierarquia"></div>
-</section>
+      {/* Content */}
+      <main className="max-w-6xl mx-auto p-6">
+        {activeTab === "inicio" && (
+          <Card className="rounded-2xl shadow-xl">
+            <CardContent className="p-6 space-y-4">
+              <h2 className="text-xl font-semibold">Sobre a ROTA</h2>
+              <p>
+                A Rondas Ostensivas Tobias de Aguiar (ROTA) é uma unidade de
+                policiamento ostensivo da Polícia Militar do Estado de São
+                Paulo, atuando principalmente no patrulhamento tático e apoio
+                operacional.
+              </p>
+              <p>
+                Este site apresenta informações institucionais e rotas de
+                atuação de forma ilustrativa.
+              </p>
+            </CardContent>
+          </Card>
+        )}
 
-<section id="ordens" class="pagina">
-<h2>Ordens Operacionais</h2>
-<input id="novaOrdem" placeholder="Digite ordem">
-</html>
+        {activeTab === "rotas" && (
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="rounded-2xl shadow-xl">
+              <CardContent className="p-6 space-y-3">
+                <h3 className="text-lg font-semibold flex items-center gap-2">
+                  <MapPin size={18} /> Zona Norte
+                </h3>
+                <p>Patrulhamento estratégico nas principais vias da região norte da capital.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-2xl shadow-xl">
+              <CardContent className="p-6 space-y-3">
+                <h3 className="text-lg font-semibold flex items-center gap-2">
+                  <MapPin size={18} /> Zona Sul
+                </h3>
+                <p>Atuação em áreas urbanas com foco em segurança preventiva.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-2xl shadow-xl">
+              <CardContent className="p-6 space-y-3">
+                <h3 className="text-lg font-semibold flex items-center gap-2">
+                  <MapPin size={18} /> Centro
+                </h3>
+                <p>Monitoramento de áreas comerciais e históricas da cidade.</p>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-2xl shadow-xl">
+              <CardContent className="p-6 space-y-3">
+                <h3 className="text-lg font-semibold flex items-center gap-2">
+                  <MapPin size={18} /> Zona Leste
+                </h3>
+                <p>Policiamento tático com apoio às unidades territoriais.</p>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {activeTab === "unidades" && (
+          <Card className="rounded-2xl shadow-xl">
+            <CardContent className="p-6 space-y-4">
+              <h2 className="text-xl font-semibold">Unidades Operacionais</h2>
+              <ul className="list-disc list-inside space-y-2">
+                <li>Batalhão Tobias de Aguiar</li>
+                <li>Companhia de Patrulhamento Tático</li>
+                <li>Equipe de Apoio Operacional</li>
+                <li>Centro de Treinamento Especializado</li>
+              </ul>
+            </CardContent>
+          </Card>
+        )}
+
+        {activeTab === "contato" && (
+          <Card className="rounded-2xl shadow-xl">
+            <CardContent className="p-6 space-y-4">
+              <h2 className="text-xl font-semibold">Contato</h2>
+              <p>Emergência: 190</p>
+              <p>Site Oficial da Polícia Militar: www.policiamilitar.sp.gov.br</p>
+              <p>Endereço institucional: São Paulo - SP</p>
+            </CardContent>
+          </Card>
+        )}
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-blue-900 text-white text-center p-4 mt-10">
+        <p>© 2026 Polícia Militar do Estado de São Paulo - Site Informativo</p>
+      </footer>
+    </div>
+  );
+}
