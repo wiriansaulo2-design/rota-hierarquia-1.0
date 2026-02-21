@@ -1,105 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel de Membros</title>
-
-<style>
-body{
-font-family: Arial;
-margin:0;
-background:#f3f4f6;
-}
-
-header{
-background:#111827;
-color:white;
-padding:15px;
-text-align:center;
-font-size:22px;
-}
-
-nav{
-background:#1f2937;
-padding:10px;
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-justify-content:center;
-}
-
-nav button{
-background:#2563eb;
-color:white;
-border:none;
-padding:8px 14px;
-border-radius:6px;
-cursor:pointer;
-}
-
-nav button:hover{
-background:#1d4ed8;
-}
-
-main{
-padding:20px;
-}
-
-.aba{
-display:none;
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.05);
-}
-
-.ativa{
-display:block;
-}
-
-li{
-padding:6px 0;
-border-bottom:1px solid #eee;
-}
-</style>
-
+<title>Sistema Militar</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>Painel de Hierarquia</header>
+<header>
+<h1>🪖 Sistema de Comando</h1>
+<button onclick="loginGoogle()">Login Google</button>
+<button onclick="logout()">Sair</button>
+</header>
 
 <nav>
-<button onclick="abrirAba('recrutas')">Recrutas</button>
-<button onclick="abrirAba('soldados')">Soldados</button>
-<button onclick="abrirAba('cabos')">Cabos</button>
-<button onclick="abrirAba('sargentos')">Sargentos</button>
-<button onclick="abrirAba('tenentes')">Tenentes</button>
-<button onclick="abrirAba('capitaes')">Capitães</button>
-<button onclick="abrirAba('coroneis')">Coronéis</button>
-<button onclick="abrirAba('generais')">Generais</button>
+<button onclick="mostrar('dashboard')">Dashboard</button>
+<button onclick="mostrar('hierarquia')">Hierarquia</button>
+<button onclick="mostrar('ordens')">Ordens</button>
+<button onclick="mostrar('admin')">Admin</button>
 </nav>
 
-<main>
+<section id="dashboard" class="pagina">
+<h2>Centro de Comando</h2>
+<div id="efetivo"></div>
+</section>
 
-<div id="recrutas" class="aba ativa"><h2>Recrutas</h2></div>
-<div id="soldados" class="aba"><h2>Soldados</h2></div>
-<div id="cabos" class="aba"><h2>Cabos</h2></div>
-<div id="sargentos" class="aba"><h2>Sargentos</h2></div>
-<div id="tenentes" class="aba"><h2>Tenentes</h2></div>
-<div id="capitaes" class="aba"><h2>Capitães</h2></div>
-<div id="coroneis" class="aba"><h2>Coronéis</h2></div>
-<div id="generais" class="aba"><h2>Generais</h2></div>
+<section id="hierarquia" class="pagina">
+<h2>Cadeia de Comando</h2>
+<div id="listaHierarquia"></div>
+</section>
 
-</main>
-
-<script>
-function abrirAba(id){
-document.querySelectorAll(".aba").forEach(a=>a.classList.remove("ativa"))
-document.getElementById(id).classList.add("ativa")
-}
-</script>
-
-</body>
+<section id="ordens" class="pagina">
+<h2>Ordens Operacionais</h2>
+<input id="novaOrdem" placeholder="Digite ordem">
 </html>
