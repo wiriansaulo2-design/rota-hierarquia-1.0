@@ -1,27 +1,17 @@
-// Menu responsivo
-document.getElementById("menu-toggle").addEventListener("click",()=>{
-    document.getElementById("menu").classList.toggle("active");
-});
+const hero = document.querySelector(".hero");
 
-// Hero canvas simples (estrelas)
-const canvas = document.getElementById('heroCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const images = [
+  "assets/rota_21_lucca.jpg",
+  "assets/rota_54.jpg",
+  "assets/ROTA_98.jpg"
+];
 
-const stars = [];
-for(let i=0;i<100;i++){
-    stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5});
+let current = 0;
+
+function changeBackground() {
+  hero.style.backgroundImage = `url(${images[current]})`;
+  current = (current + 1) % images.length;
 }
 
-function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="#fff";
-    stars.forEach(s=>{
-        ctx.beginPath();
-        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-        ctx.fill();
-    });
-    requestAnimationFrame(draw);
-}
-draw();
+changeBackground();
+setInterval(changeBackground, 5000);
