@@ -1,60 +1,37 @@
-body{
-margin:0;
-font-family:Segoe UI, sans-serif;
-background:#0f172a;
-color:white;
+// CONFIG FIREBASE (COLE SUAS CHAVES)
+const firebaseConfig = {
+  apiKey: "COLE_AQUI",
+  authDomain: "COLE_AQUI",
+  projectId: "COLE_AQUI",
+  storageBucket: "COLE_AQUI",
+  messagingSenderId: "COLE_AQUI",
+  appId: "COLE_AQUI"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// LOGIN GOOGLE
+const provider = new firebase.auth.GoogleAuthProvider();
+
+function loginGoogle(){
+auth.signInWithPopup(provider);
 }
 
-header{
-background:#020617;
-padding:15px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid #1e293b;
+function logout(){
+auth.signOut();
 }
 
-nav{
-background:#020617;
-padding:10px;
-display:flex;
-gap:10px;
-justify-content:center;
-border-bottom:1px solid #1e293b;
+// VERIFICAR LOGIN
+auth.onAuthStateChanged(user=>{
+if(user){
+loginScreen.style.display="none";
+app.style.display="block";
+carregarDados();
+}else{
+loginScreen.style.display="flex";
+app.style.display="none";
 }
-
-nav button{
-background:#2563eb;
-border:none;
-padding:8px 16px;
-color:white;
-border-radius:6px;
-cursor:pointer;
-}
-
-main{ padding:30px; }
-
-.aba{ display:none }
-.ativa{ display:block }
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-gap:20px;
-}
-
-.card{
-background:#020617;
-padding:20px;
-border-radius:12px;
-text-align:center;
-border:1px solid #1e293b;
-}
-
-.card img{
-width:100px;
-border-radius:50%;
-margin-bottom:10px;
-}
-
+});
 }
