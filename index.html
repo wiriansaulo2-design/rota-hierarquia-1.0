@@ -1,102 +1,61 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROTA - Rondas Ostensivas Tobias de Aguiar</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- Sirene realista -->
-<div class="sirene-realista"></div>
-
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="logo">ROTA</div>
-    <div class="menu-toggle" id="menu-toggle">☰</div>
-    <nav>
-        <ul class="menu" id="menu">
-            <li><a href="#inicio" class="nav-link active">Início</a></li>
-            <li><a href="#historia" class="nav-link">História</a></li>
-            <li><a href="#operacoes" class="nav-link">Operações</a></li>
-            <li><a href="#estatisticas" class="nav-link">Estatísticas</a></li>
-            <li><a href="#galeria" class="nav-link">Galeria</a></li>
-            <li><a href="#contato" class="nav-link">Contato</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- HERO ANIMADO -->
-<section id="inicio" class="hero">
-    <canvas id="heroCanvas"></canvas>
-    <div class="overlay"></div>
-    <div class="conteudo">
-        <h1>Rondas Ostensivas <span>Tobias de Aguiar</span></h1>
-        <p>Dignidade acima de tudo.</p>
-        <a href="#operacoes" class="btn-operacional">Ver Operações</a>
-    </div>
-</section>
-
 <!-- HISTÓRIA -->
 <section id="historia" class="secao">
     <h2>História</h2>
-    <p>Unidade especializada da Polícia Militar do Estado de São Paulo, reconhecida por sua atuação em ocorrências de alta complexidade.</p>
+    <p>
+        As <strong>Rondas Ostensivas Tobias de Aguiar (ROTA)</strong> são uma unidade de elite da <strong>Polícia Militar do Estado de São Paulo (PMESP)</strong>,
+        com papel destacado no patrulhamento tático, resposta rápida a ocorrências de alto risco e apoio às demais unidades da corporação.
+    </p>
+
+    <h3>Origens e Fundação</h3>
+    <p>
+        A história da ROTA começa com a criação do <strong>Batalhão Tobias de Aguiar</strong>, inaugurado em <strong>1º de dezembro de 1891</strong>
+        na <strong>Avenida Tiradentes, bairro da Luz, São Paulo</strong>, em um edifício projetado pelo arquiteto <strong>Ramos de Azevedo</strong>.
+        Inicialmente, o Batalhão fazia parte da então Força Pública Paulista, predecessora da atual Polícia Militar.
+    </p>
+    <p>
+        A criação formal das <strong>Rondas Ostensivas Tobias de Aguiar</strong> como unidade especializada ocorreu em <strong>15 de outubro de 1970</strong>,
+        formando uma tropa de patrulhamento tático motorizado com equipes altamente treinadas para atuar nas áreas urbanas mais críticas da capital e do interior do estado.
+    </p>
+    <p>
+        Desde então, a ROTA se consolidou como uma das unidades mais respeitadas da PMESP, conhecida por disciplina, rapidez de resposta e atuação em ocorrências complexas,
+        passando por contínuas modernizações táticas, equipamentos e treinamentos especializados.
+    </p>
+
+    <h3>O Quartel – Sede e Legado</h3>
+    <p>
+        O <strong>Quartel do Batalhão Tobias de Aguiar</strong>, localizado na Avenida Tiradentes, é um dos mais tradicionais da Polícia Militar de São Paulo.
+        Desde sua fundação, o espaço serviu de base para unidades especializadas e sempre foi um centro de formação, treinamento e operações de elite,
+        consolidando a imagem de uma tropa disciplinada e preparada para desafios constantes.
+    </p>
+
+    <h3>Significado dos Símbolos da ROTA</h3>
+
+    <h4>O Braçal</h4>
+    <p>
+        O braçal da ROTA representa honra e identidade da tropa, simbolizando:
+        disciplina, compromisso com a missão e lealdade à corporação e à sociedade.
+    </p>
+
+    <h4>A Boina</h4>
+    <p>
+        A boina preta é símbolo de disciplina, unidade e espírito de corpo, distinguindo o policial da ROTA dentro da Polícia Militar.
+    </p>
+
+    <h4>O Brasão</h4>
+    <p>
+        O brasão institucional da ROTA reúne elementos que representam:
+        <ul>
+            <li><strong>Escudo:</strong> proteção da sociedade e missão de garantir a ordem pública.</li>
+            <li><strong>Espadas cruzadas:</strong> prontidão para o confronto e ação em situações de risco.</li>
+            <li><strong>Elementos urbanos:</strong> foco na segurança das áreas mais complexas de São Paulo.</li>
+            <li><strong>Cores e padrões:</strong> tradição, disciplina e aliança com a história da corporação.</li>
+        </ul>
+    </p>
+
+    <h3>Legado e Atualidade</h3>
+    <p>
+        Ao longo de mais de cinco décadas desde sua criação oficial, a ROTA consolidou-se como pilar da segurança pública no Estado de São Paulo.
+        A tropa continua evoluindo, incorporando novas técnicas de inteligência, equipamentos modernos e capacitação contínua,
+        mantendo o compromisso de proteger a sociedade com disciplina e eficiência.
+    </p>
 </section>
-
-<!-- OPERAÇÕES -->
-<section id="operacoes" class="secao escura">
-    <h2>Operações</h2>
-    <p>Patrulhamento tático, combate ao crime organizado e ações de resposta rápida em situações críticas.</p>
-</section>
-
-<!-- ESTATÍSTICAS -->
-<section id="estatisticas" class="secao">
-    <h2>Estatísticas</h2>
-    <div class="stats-container">
-        <div class="stat">
-            <canvas class="circular-chart" data-percentage="90"></canvas>
-            <p>Operações Realizadas</p>
-        </div>
-        <div class="stat">
-            <canvas class="circular-chart" data-percentage="75"></canvas>
-            <p>Prisões Efetuadas</p>
-        </div>
-        <div class="stat">
-            <canvas class="circular-chart" data-percentage="85"></canvas>
-            <p>Patrulhamentos</p>
-        </div>
-    </div>
-</section>
-
-<!-- GALERIA -->
-<section id="galeria" class="secao escura">
-    <h2>Galeria</h2>
-    <div class="gallery">
-        <img src="ROTA_98.png" alt="Operação 1">
-        <img src="rota_21_lucca.png" alt="Operação 2">
-        <img src="ROTA_98.png" alt="Treinamento">
-        <img src="rota_21_lucca.png" alt="Veículo">
-    </div>
-</section>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-    <span id="modal-close">&times;</span>
-    <img class="modal-content" id="modal-img">
-</div>
-
-<!-- CONTATO -->
-<section id="contato" class="secao">
-    <h2>Contato</h2>
-    <p>Para informações institucionais, utilize os canais oficiais da Polícia Militar do Estado de São Paulo.</p>
-</section>
-
-<!-- RODAPÉ -->
-<footer class="rodape">
-    <p>© 2026 Polícia Militar do Estado de São Paulo - ROTA | Todos os direitos reservados</p>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
