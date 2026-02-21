@@ -1,20 +1,72 @@
-<header class="navbar">
-    <div class="logo">ROTA</div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROTA - Rondas Ostensivas Tobias de Aguiar</title>
 
-    <nav>
-        <ul class="menu">
-            <li><a href="#">Início</a></li>
-            <li><a href="#">História</a></li>
-            <li><a href="#">Operações</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-    </nav>
-</header>
-<section class="hero">
-    <div class="overlay"></div>
+    <link rel="stylesheet" href="style.css">
 
-    <div class="conteudo">
-        <h1>Rondas Ostensivas <span>Tobias de Aguiar</span></h1>
-        <p>Dignidade acima de tudo.</p>
-    </div>
-</section>
+    <!-- Rolagem suave -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">ROTA</div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#historia">História</a></li>
+                <li><a href="#operacoes">Operações</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- INÍCIO -->
+    <section id="inicio" class="hero">
+        <div class="overlay"></div>
+
+        <div class="conteudo">
+            <h1>Rondas Ostensivas <span>Tobias de Aguiar</span></h1>
+            <p>Dignidade acima de tudo.</p>
+        </div>
+    </section>
+
+    <!-- HISTÓRIA -->
+    <section id="historia" class="secao">
+        <h2>História</h2>
+        <p>
+            Unidade especializada da Polícia Militar do Estado de São Paulo,
+            reconhecida por sua atuação em ocorrências de alta complexidade.
+        </p>
+    </section>
+
+    <!-- OPERAÇÕES -->
+    <section id="operacoes" class="secao escura">
+        <h2>Operações</h2>
+        <p>
+            Patrulhamento tático, combate ao crime organizado e ações de
+            resposta rápida em situações críticas.
+        </p>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="secao">
+        <h2>Contato</h2>
+        <p>
+            Para informações institucionais, procure os canais oficiais da
+            Polícia Militar do Estado de São Paulo.
+        </p>
+    </section>
+
+</body>
+</html>
