@@ -1,36 +1,46 @@
-// 🔥 CONFIG FIREBASE
-const firebaseConfig = {
-  apiKey: "COLE_AQUI",
-  authDomain: "COLE_AQUI",
-  projectId: "COLE_AQUI",
-  storageBucket: "COLE_AQUI",
-  messagingSenderId: "COLE_AQUI",
-  appId: "COLE_AQUI"
-};
+function abrirAba(id) {
+document.querySelectorAll(".aba").forEach(aba => {
+aba.classList.remove("ativa")
+})
 
-// INICIAR FIREBASE
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-// SALVAR DADO
-function salvar() {
-  const texto = document.getElementById("mensagem").value;
-
-  db.collection("mensagens").add({
-    texto: texto
-  });
-
-  document.getElementById("mensagem").value = "";
+document.getElementById(id).classList.add("ativa")
 }
 
-// MOSTRAR DADOS EM TEMPO REAL
-db.collection("mensagens").onSnapshot(snapshot => {
-  const lista = document.getElementById("lista");
-  lista.innerHTML = "";
 
-  snapshot.forEach(doc => {
-    const li = document.createElement("li");
-    li.textContent = doc.data().texto;
-    lista.appendChild(li);
-  });
-});
+/* EXEMPLO DE COMO ADICIONAR MEMBROS (APAGUE OU EDITE) */
+
+const dados = {
+recrutas: [],
+soldados: [],
+cabos: [],
+sargentos: [],
+tenentes: [],
+capitaes: [],
+coroneis: [],
+geral: []
+}
+
+function renderizar() {
+
+for (let patente in dados) {
+
+const lista = document.getElementById("lista" + capitalize(patente))
+
+if (!lista) continue
+
+lista.innerHTML = ""
+
+dados[patente].forEach(nome => {
+const li = document.createElement("li")
+li.textContent = nome
+lista.appendChild(li)
+})
+}
+
+}
+
+function capitalize(texto) {
+return texto.charAt(0).toUpperCase() + texto.slice(1)
+}
+
+renderizar()
