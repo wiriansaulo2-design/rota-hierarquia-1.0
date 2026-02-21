@@ -1,5 +1,4 @@
 const ordemPatentes=[
-"General",
 "Coronel",
 "Major",
 "Capitão",
