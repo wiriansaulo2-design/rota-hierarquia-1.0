@@ -1,8 +1,17 @@
-const slides = document.querySelectorAll(".slide");
-let current = 0;
+fetch("/api/stats")
+    .then(res => res.json())
+    .then(data => {
+        const container = document.getElementById("stats");
 
-setInterval(() => {
-  slides[current].classList.remove("active");
-  current = (current + 1) % slides.length;
-  slides[current].classList.add("active");
-}, 5000);
+        Object.entries(data).forEach(([key, value]) => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            card.innerHTML = `
+                <h2>${value}</h2>
+                <p>${key.toUpperCase()}</p>
+            `;
+
+            container.appendChild(card);
+        });
+    });
