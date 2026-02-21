@@ -9,22 +9,20 @@
 
 <body>
 
-<!-- Sirene superior -->
-<div class="sirene"></div>
+<!-- Sirene superior realista -->
+<div class="sirene-realista"></div>
 
 <!-- NAVBAR -->
 <header class="navbar">
     <div class="logo">ROTA</div>
-
-    <div class="menu-toggle" id="menu-toggle">
-        ☰
-    </div>
-
+    <div class="menu-toggle" id="menu-toggle">☰</div>
     <nav>
         <ul class="menu" id="menu">
             <li><a href="#inicio" class="nav-link active">Início</a></li>
             <li><a href="#historia" class="nav-link">História</a></li>
             <li><a href="#operacoes" class="nav-link">Operações</a></li>
+            <li><a href="#estatisticas" class="nav-link">Estatísticas</a></li>
+            <li><a href="#galeria" class="nav-link">Galeria</a></li>
             <li><a href="#contato" class="nav-link">Contato</a></li>
         </ul>
     </nav>
@@ -43,23 +41,56 @@
 <!-- HISTÓRIA -->
 <section id="historia" class="secao">
     <h2>História</h2>
-    <p>Unidade especializada da Polícia Militar do Estado de São Paulo.</p>
+    <p>Unidade especializada da Polícia Militar do Estado de São Paulo, reconhecida por sua atuação em ocorrências de alta complexidade.</p>
 </section>
 
 <!-- OPERAÇÕES -->
 <section id="operacoes" class="secao escura">
     <h2>Operações</h2>
-    <p>Patrulhamento tático e resposta a ocorrências de alta complexidade.</p>
+    <p>Patrulhamento tático, combate ao crime organizado e ações de resposta rápida em situações críticas.</p>
+</section>
+
+<!-- ESTATÍSTICAS -->
+<section id="estatisticas" class="secao">
+    <h2>Estatísticas</h2>
+    <div class="stats-container">
+        <div class="stat">
+            <h3 class="stat-number" data-number="1200">0</h3>
+            <p>Operações Realizadas</p>
+        </div>
+        <div class="stat">
+            <h3 class="stat-number" data-number="350">0</h3>
+            <p>Prisões Efetuadas</p>
+        </div>
+        <div class="stat">
+            <h3 class="stat-number" data-number="5000">0</h3>
+            <p>Patrulhamentos</p>
+        </div>
+    </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria" class="secao escura">
+    <h2>Galeria</h2>
+    <div class="gallery">
+        <img src="rota_54.png" alt="Operação 1">
+        <img src="rota_54.png" alt="Operação 2">
+        <img src="rota_54.png" alt="Treinamento">
+        <img src="rota_54.png" alt="Veículo">
+    </div>
 </section>
 
 <!-- CONTATO -->
 <section id="contato" class="secao">
     <h2>Contato</h2>
-    <p>Consulte os canais oficiais da corporação.</p>
+    <p>Para informações institucionais, utilize os canais oficiais da Polícia Militar do Estado de São Paulo.</p>
 </section>
 
-<!-- SCRIPT -->
-<script src="script.js"></script>
+<!-- RODAPÉ INSTITUCIONAL -->
+<footer class="rodape">
+    <p>© 2026 Polícia Militar do Estado de São Paulo - ROTA | Todos os direitos reservados</p>
+</footer>
 
+<script src="script.js"></script>
 </body>
 </html>
