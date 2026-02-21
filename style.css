@@ -1,34 +1,37 @@
-/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: #111;
-    font-family: 'Arial Black', sans-serif;
+    background: #111;
+    font-family: Arial, sans-serif;
     color: #c0c0c0;
 }
 
 /* NAVBAR */
 .navbar {
     position: fixed;
-    top: 0;
     width: 100%;
+    top: 0;
     padding: 20px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.9);
     border-bottom: 2px solid #8b0000;
     z-index: 999;
 }
 
 .logo {
     color: #8b0000;
-    font-size: 24px;
-    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 22px;
 }
 
 .menu {
@@ -42,9 +45,27 @@ body {
     color: #c0c0c0;
     text-transform: uppercase;
     transition: 0.3s;
+    position: relative;
 }
 
-.menu li a:hover {
+/* Linha animada */
+.menu li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: #8b0000;
+    transition: 0.3s;
+}
+
+.menu li a:hover::after,
+.menu li a.active::after {
+    width: 100%;
+}
+
+.menu li a.active {
     color: #8b0000;
 }
 
@@ -65,17 +86,16 @@ body {
 .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.75);
 }
 
 .conteudo {
     position: relative;
     z-index: 2;
-    text-transform: uppercase;
 }
 
 .conteudo h1 {
-    font-size: 50px;
+    font-size: 48px;
 }
 
 .conteudo span {
@@ -83,8 +103,23 @@ body {
 }
 
 .conteudo p {
-    margin-top: 15px;
-    color: #2f3e2f;
+    margin: 20px 0;
+}
+
+/* BOTÃO OPERACIONAL */
+.btn-operacional {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid #8b0000;
+    color: #8b0000;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-operacional:hover {
+    background: #8b0000;
+    color: #fff;
 }
 
 /* SEÇÕES */
@@ -94,11 +129,39 @@ body {
 }
 
 .secao h2 {
-    font-size: 32px;
     margin-bottom: 20px;
     color: #8b0000;
 }
 
 .escura {
-    background-color: #1c1c1c;
+    background: #1c1c1c;
+}
+
+/* RESPONSIVO */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    color: #c0c0c0;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: #000;
+        flex-direction: column;
+        width: 200px;
+        padding: 20px;
+        display: none;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
 }
