@@ -1,37 +1,37 @@
-// CONFIG FIREBASE (COLE SUAS CHAVES)
-const firebaseConfig = {
-  apiKey: "COLE_AQUI",
-  authDomain: "COLE_AQUI",
-  projectId: "COLE_AQUI",
-  storageBucket: "COLE_AQUI",
-  messagingSenderId: "COLE_AQUI",
-  appId: "COLE_AQUI"
-};
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-// LOGIN GOOGLE
-const provider = new firebase.auth.GoogleAuthProvider();
-
-function loginGoogle(){
-auth.signInWithPopup(provider);
+body{
+margin:0;
+font-family:Arial;
+background:#0b0f14;
+color:white;
 }
 
-function logout(){
-auth.signOut();
+header{
+background:#111827;
+padding:15px;
+display:flex;
+justify-content:space-between;
 }
 
-// VERIFICAR LOGIN
-auth.onAuthStateChanged(user=>{
-if(user){
-loginScreen.style.display="none";
-app.style.display="block";
-carregarDados();
-}else{
-loginScreen.style.display="flex";
-app.style.display="none";
+nav{
+background:#1f2937;
+padding:10px;
+display:flex;
+gap:10px;
 }
-});
+
+button{
+padding:10px;
+border:none;
+border-radius:6px;
+background:#374151;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#4b5563;
+}
+
+.pagina{
+display:none;
 }
