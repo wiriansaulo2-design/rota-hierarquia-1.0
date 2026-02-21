@@ -40,3 +40,22 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll(".secao").forEach(secao => {
     observer.observe(secao);
 });
+
+/* ================= ANIMAÇÃO ESTATÍSTICAS ================= */
+const stats = document.querySelectorAll(".stat-number");
+
+stats.forEach(stat => {
+    const target = +stat.dataset.number;
+    let count = 0;
+    const step = Math.ceil(target / 200);
+
+    const updateNumber = () => {
+        count += step;
+        if (count > target) count = target;
+        stat.innerText = count;
+        if (count < target) {
+            requestAnimationFrame(updateNumber);
+        }
+    };
+    updateNumber();
+});
