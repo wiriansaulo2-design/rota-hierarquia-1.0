@@ -128,9 +128,19 @@ body {
     min-height: 100vh;
 }
 
-.secao h2 {
-    margin-bottom: 20px;
-    color: #8b0000;
+.secao {
+    padding: 120px 60px;
+    min-height: 100vh;
+
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.secao.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 }
 
 .escura {
