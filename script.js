@@ -1,160 +1,217 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+/* ===============================
+   CONFIG API
+================================ */
+const API_URL = "https://SEU-BACKEND.onrender.com";
+
+/* ===============================
+   LOGIN
+================================ */
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      const response = await fetch(`${API_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Erro no login");
+        return;
+      }
+
+      localStorage.setItem("token", data.token);
+      window.location.href = "dashboard.html";
+
+    } catch (error) {
+      console.error("Erro:", error);
+      alert("Erro ao conectar com servidor");
+    }
+  });
 }
 
-body {
-  background: #0a0a0a;
-  color: #fff;
+/* ===============================
+   PROTEGER DASHBOARD
+================================ */
+function checkAuth() {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "login.html";
+  }
 }
 
-/* NAVBAR */
-.navbar {
-  position: fixed;
-  width: 100%;
-  padding: 20px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
+if (window.location.pathname.includes("dashboard.html")) {
+  checkAuth();
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 20px;
+/* ===============================
+   LOGOUT
+================================ */
+const logoutBtn = document.getElementById("logout");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.location.href = "login.html";
+  });
 }
 
-.logo span {
-  color: gold;
+/* ===============================
+   BUSCAR ESTATÍSTICAS
+================================ */
+async function loadStats() {
+  const token = localStorage.getItem("token");
+
+  try {
+    const response = await fetch(`${API_URL}/stats`, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert("Erro ao carregar dados");
+      return;
+    }
+
+    animateCounter("ocorrencias", data.ocorrencias);
+    animateCounter("prisoes", data.prisoes);
+    animateCounter("apreensoes", data.apreensoes);
+    animateCounter("municoes", data.municoes);
+
+    createChart(data);
+
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-nav a {
-  margin-left: 30px;
-  text-decoration: none;
-  color: #ccc;
-  transition: 0.3s;
+if (document.getElementById("dashboard")) {
+  loadStats();
 }
 
-nav a:hover {
-  color: gold;
+/* ===============================
+   CONTADOR ANIMADO PREMIUM
+================================ */
+function animateCounter(id, target) {
+  const element = document.getElementById(id);
+  if (!element) return;
+
+  let count = 0;
+  const speed = target / 200;
+
+  const update = () => {
+    count += speed;
+    if (count < target) {
+      element.innerText = Math.floor(count);
+      requestAnimationFrame(update);
+    } else {
+      element.innerText = target;
+    }
+  };
+
+  update();
 }
 
-/* HERO */
-.hero {
-  height: 100vh;
-  background: url('images/ROTA_98.jpg') center/cover no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
+/* ===============================
+   GRÁFICO REAL - CHART.JS
+================================ */
+function createChart(data) {
+  const ctx = document.getElementById("statsChart");
+  if (!ctx) return;
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Ocorrências", "Prisões", "Apreensões", "Munições"],
+      datasets: [{
+        label: "Operações ROTA",
+        data: [
+          data.ocorrencias,
+          data.prisoes,
+          data.apreensoes,
+          data.municoes
+        ],
+        backgroundColor: [
+          "#d4af37",
+          "#b8860b",
+          "#ffd700",
+          "#c5a000"
+        ],
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: "#ffffff"
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: "#ffffff" },
+          grid: { color: "#333" }
+        },
+        y: {
+          ticks: { color: "#ffffff" },
+          grid: { color: "#333" }
+        }
+      }
+    }
+  });
 }
 
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
+/* ===============================
+   SLIDER PREMIUM AUTOMÁTICO
+================================ */
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  slides[index].classList.add("active");
 }
 
-.hero-content {
-  position: relative;
-  max-width: 700px;
+function autoSlide() {
+  currentSlide++;
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  }
+  showSlide(currentSlide);
 }
 
-.hero h1 {
-  font-size: 40px;
-  margin-bottom: 20px;
+if (slides.length > 0) {
+  setInterval(autoSlide, 5000);
 }
 
-.hero p {
-  color: #ccc;
-  margin-bottom: 30px;
-}
+/* ===============================
+   ANIMAÇÃO DE ENTRADA SUAVE
+================================ */
+window.addEventListener("scroll", () => {
+  const elements = document.querySelectorAll(".card");
 
-.btn {
-  padding: 12px 30px;
-  border: none;
-  background: gold;
-  color: black;
-  font-weight: 600;
-  cursor: pointer;
-  border-radius: 30px;
-  transition: 0.3s;
-}
+  elements.forEach(el => {
+    const position = el.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
 
-.btn:hover {
-  background: #d4af37;
-}
-
-/* STATS */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap: 30px;
-  padding: 80px 60px;
-  text-align: center;
-}
-
-.card {
-  background: #111;
-  padding: 40px;
-  border-radius: 12px;
-  border: 1px solid #222;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  border-color: gold;
-}
-
-.card h2 {
-  font-size: 36px;
-  color: gold;
-}
-
-/* GALLERY */
-.gallery {
-  padding: 60px;
-  text-align: center;
-}
-
-.gallery h2 {
-  margin-bottom: 40px;
-}
-
-.slider {
-  position: relative;
-  max-width: 900px;
-  margin: auto;
-  overflow: hidden;
-}
-
-.slide {
-  width: 100%;
-  display: none;
-  border-radius: 10px;
-}
-
-.slide.active {
-  display: block;
-  animation: fade 1s ease-in-out;
-}
-
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-/* FOOTER */
-footer {
-  padding: 20px;
-  text-align: center;
-  background: #111;
-  color: #777;
-}
+    if (position < screenHeight - 100) {
+      el.classList.add("visible");
+    }
+  });
+});
