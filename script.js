@@ -1,17 +1,8 @@
-const hero = document.querySelector(".hero");
-
-const images = [
-  "assets/rota_21_lucca.jpg",
-  "assets/rota_54.jpg",
-  "assets/ROTA_98.jpg"
-];
-
+const slides = document.querySelectorAll(".slide");
 let current = 0;
 
-function changeBackground() {
-  hero.style.backgroundImage = `url(${images[current]})`;
-  current = (current + 1) % images.length;
-}
-
-changeBackground();
-setInterval(changeBackground, 5000);
+setInterval(() => {
+  slides[current].classList.remove("active");
+  current = (current + 1) % slides.length;
+  slides[current].classList.add("active");
+}, 5000);
