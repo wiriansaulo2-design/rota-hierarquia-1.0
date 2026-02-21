@@ -4,47 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ROTA | Dashboard</title>
-<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="./style.css">
+<script defer src="./script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
 <header class="navbar">
   <div class="logo">ROTA <span>Painel Operacional</span></div>
-  <button id="logout" class="logout-btn">Sair</button>
+  <button id="logout" class="btn-outline">Sair</button>
 </header>
 
-<section class="dashboard" id="dashboard">
+<section class="dashboard">
 
   <div class="stats-grid">
-    <div class="stat-card">
-      <h2 id="ocorrencias">0</h2>
-      <p>Ocorrências</p>
-    </div>
-
-    <div class="stat-card">
-      <h2 id="prisoes">0</h2>
-      <p>Prisões</p>
-    </div>
-
-    <div class="stat-card">
-      <h2 id="apreensoes">0</h2>
-      <p>Apreensões</p>
-    </div>
-
-    <div class="stat-card">
-      <h2 id="municoes">0</h2>
-      <p>Munições</p>
-    </div>
+    <div class="card"><h2 id="ocorrencias">0</h2><p>Ocorrências</p></div>
+    <div class="card"><h2 id="prisoes">0</h2><p>Prisões</p></div>
+    <div class="card"><h2 id="apreensoes">0</h2><p>Apreensões</p></div>
+    <div class="card"><h2 id="municoes">0</h2><p>Munições</p></div>
   </div>
 
-  <div class="chart-container">
+  <div class="chart-box">
     <canvas id="statsChart"></canvas>
   </div>
 
 </section>
 
-<script src="script.js"></script>
 </body>
 </html>
