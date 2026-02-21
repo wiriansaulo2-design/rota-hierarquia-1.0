@@ -1,243 +1,101 @@
-/* ================= RESET ================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
 body {
-    background: #111 url('textura.png') repeat; /* Fundo com textura */
+    background: #0b0b0b;
     font-family: "Segoe UI", Arial, sans-serif;
     color: #c0c0c0;
+    overflow-x: hidden;
 }
 
-/* ================= SIRENE REALISTA ================= */
+/* SIRENE REALISTA */
 .sirene-realista {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
+    top:0; left:0;
+    width:100%; height:6px;
     background: linear-gradient(90deg, #ff0000, #000, #ff0000);
     background-size: 200% 100%;
     animation: sireneReal 1s linear infinite alternate;
-    z-index: 1000;
+    z-index:1000;
 }
-
 @keyframes sireneReal {
-    0% { background-position: 0 0; }
-    100% { background-position: 200% 0; }
+    0% { background-position:0 0; }
+    100% { background-position:200% 0; }
 }
 
-/* ================= NAVBAR ================= */
+/* NAVBAR */
 .navbar {
     position: fixed;
-    width: 100%;
-    top: 0;
-    padding: 20px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width:100%;
+    top:0;
+    padding:20px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     background: rgba(0,0,0,0.95);
-    border-bottom: 1px solid #444;
-    z-index: 999;
+    border-bottom:1px solid #444;
+    z-index:999;
 }
-
-.logo {
-    color: #8b0000;
-    font-weight: bold;
-    font-size: 22px;
-}
-
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 40px;
-}
-
+.logo { color:#8b0000; font-weight:bold; font-size:22px; }
+.menu { list-style:none; display:flex; gap:40px; }
 .menu li a {
-    text-decoration: none;
-    color: #c0c0c0;
-    text-transform: uppercase;
-    transition: 0.3s;
-    position: relative;
+    text-decoration:none;
+    color:#c0c0c0;
+    text-transform:uppercase;
+    transition:0.3s;
+    position:relative;
 }
-
 .menu li a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    left: 0;
-    bottom: -5px;
-    background: #8b0000;
-    transition: 0.3s;
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0;
+    bottom:-5px;
+    background:#8b0000;
+    transition:0.3s;
 }
-
 .menu li a:hover::after,
-.menu li a.active::after {
-    width: 100%;
+.menu li a.active::after { width:100%; }
+.menu li a.active { color:#8b0000; }
+.menu-toggle { display:none; font-size:28px; color:#c0c0c0; cursor:pointer; }
+@media(max-width:768px){
+    .menu{position:absolute; top:80px; right:0; background:#000; flex-direction:column; width:200px; padding:20px; display:none;}
+    .menu.show{display:flex;}
+    .menu-toggle{display:block;}
 }
 
-.menu li a.active {
-    color: #8b0000;
-}
+/* HERO COM FUNDO ANIMADO */
+.hero { position:relative; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding-top:100px; overflow:hidden; }
+#heroCanvas { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; }
+.overlay { position:absolute; inset:0; background: rgba(0,0,0,0.6); z-index:2; }
+.conteudo { position:relative; z-index:3; }
+.conteudo h1{ font-size:48px; }
+.conteudo span{ color:#8b0000; }
+.conteudo p{ margin:20px 0; }
+.btn-operacional { display:inline-block; padding:12px 30px; border:1px solid #8b0000; color:#8b0000; text-decoration:none; text-transform:uppercase; font-weight:600; transition:0.3s; }
+.btn-operacional:hover { background:#8b0000; color:#fff; }
 
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    color: #c0c0c0;
-    cursor: pointer;
-}
+/* SEÇÕES */
+.secao { padding:120px 60px; min-height:100vh; opacity:0; transform:translateY(40px); transition:0.8s ease; }
+.secao.show { opacity:1; transform:translateY(0); }
+.secao h2 { font-size:28px; letter-spacing:1px; border-left:4px solid #8b0000; padding-left:10px; margin-bottom:20px; }
+.escura { background:#1c1c1c; }
 
-@media (max-width: 768px) {
-    .menu {
-        position: absolute;
-        top: 80px;
-        right: 0;
-        background: #000;
-        flex-direction: column;
-        width: 200px;
-        padding: 20px;
-        display: none;
-    }
-    .menu.show {
-        display: flex;
-    }
-    .menu-toggle {
-        display: block;
-    }
-}
+/* ESTATÍSTICAS CIRCULARES */
+.stats-container { display:flex; gap:50px; justify-content:center; flex-wrap:wrap; margin-top:40px; }
+.stat { text-align:center; }
+.circular-chart { width:120px; height:120px; }
 
-/* ================= HERO ================= */
-.hero {
-    position: relative;
-    height: 100vh;
-    background-image: url("./rota_54.png");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 100px;
-}
+/* GALERIA */
+.gallery { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; margin-top:40px; }
+.gallery img { width:100%; height:auto; border:2px solid #8b0000; cursor:pointer; transition:0.3s; }
+.gallery img:hover { transform:scale(1.05); box-shadow:0 0 10px #8b0000; }
 
-.overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.75);
-}
+/* MODAL */
+.modal { display:none; position:fixed; z-index:10000; padding-top:100px; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.9); }
+.modal-content { margin:auto; display:block; max-width:90%; max-height:80%; }
+#modal-close { position:absolute; top:30px; right:50px; color:#fff; font-size:40px; font-weight:bold; cursor:pointer; }
 
-.conteudo {
-    position: relative;
-    z-index: 2;
-}
-
-.conteudo h1 {
-    font-size: 48px;
-}
-
-.conteudo span {
-    color: #8b0000;
-}
-
-.conteudo p {
-    margin: 20px 0;
-}
-
-.btn-operacional {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 1px solid #8b0000;
-    color: #8b0000;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.btn-operacional:hover {
-    background: #8b0000;
-    color: #fff;
-}
-
-/* ================= SEÇÕES ================= */
-.secao {
-    padding: 120px 60px;
-    min-height: 100vh;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 0.8s ease;
-}
-
-.secao.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.secao h2 {
-    font-size: 28px;
-    letter-spacing: 1px;
-    border-left: 4px solid #8b0000;
-    padding-left: 10px;
-    margin-bottom: 20px;
-}
-
-.escura {
-    background: #1c1c1c;
-}
-
-/* ================= ESTATÍSTICAS ================= */
-.stats-container {
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 40px;
-}
-
-.stat {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 48px;
-    font-weight: bold;
-    color: #8b0000;
-}
-
-/* ================= GALERIA ================= */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 40px;
-}
-
-.gallery img {
-    width: 100%;
-    height: auto;
-    border: 2px solid #8b0000;
-    transition: 0.3s;
-}
-
-.gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px #8b0000;
-}
-
-/* ================= RODAPÉ ================= */
-.rodape {
-    text-align: center;
-    padding: 30px 20px;
-    background: #000;
-    border-top: 2px solid #8b0000;
-    color: #c0c0c0;
-    font-size: 14px;
-}
+/* RODAPÉ */
+.rodape { text-align:center; padding:30px 20px; background:#000; border-top:2px solid #8b0000; color:#c0c0c0; font-size:14px; }
