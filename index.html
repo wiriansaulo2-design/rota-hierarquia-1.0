@@ -4,14 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Painel de Membros</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+font-family: Arial;
+margin:0;
+background:#f3f4f6;
+}
+
+header{
+background:#111827;
+color:white;
+padding:15px;
+text-align:center;
+font-size:22px;
+}
+
+nav{
+background:#1f2937;
+padding:10px;
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+justify-content:center;
+}
+
+nav button{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}
+
+nav button:hover{
+background:#1d4ed8;
+}
+
+main{
+padding:20px;
+}
+
+.aba{
+display:none;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.05);
+}
+
+.ativa{
+display:block;
+}
+
+li{
+padding:6px 0;
+border-bottom:1px solid #eee;
+}
+</style>
+
 </head>
 
 <body>
 
-<header>
-<h1>Painel de Membros</h1>
-</header>
+<header>Painel de Hierarquia</header>
 
 <nav>
 <button onclick="abrirAba('recrutas')">Recrutas</button>
@@ -21,53 +78,28 @@
 <button onclick="abrirAba('tenentes')">Tenentes</button>
 <button onclick="abrirAba('capitaes')">Capitães</button>
 <button onclick="abrirAba('coroneis')">Coronéis</button>
-<button onclick="abrirAba('geral')">Generais</button>
+<button onclick="abrirAba('generais')">Generais</button>
 </nav>
 
 <main>
 
-<div id="recrutas" class="aba ativa">
-<h2>Recrutas</h2>
-<ul id="listaRecrutas"></ul>
-</div>
-
-<div id="soldados" class="aba">
-<h2>Soldados</h2>
-<ul id="listaSoldados"></ul>
-</div>
-
-<div id="cabos" class="aba">
-<h2>Cabos</h2>
-<ul id="listaCabos"></ul>
-</div>
-
-<div id="sargentos" class="aba">
-<h2>Sargentos</h2>
-<ul id="listaSargentos"></ul>
-</div>
-
-<div id="tenentes" class="aba">
-<h2>Tenentes</h2>
-<ul id="listaTenentes"></ul>
-</div>
-
-<div id="capitaes" class="aba">
-<h2>Capitães</h2>
-<ul id="listaCapitaes"></ul>
-</div>
-
-<div id="coroneis" class="aba">
-<h2>Coronéis</h2>
-<ul id="listaCoroneis"></ul>
-</div>
-
-<div id="geral" class="aba">
-<h2>Generais</h2>
-<ul id="listaGenerais"></ul>
-</div>
+<div id="recrutas" class="aba ativa"><h2>Recrutas</h2></div>
+<div id="soldados" class="aba"><h2>Soldados</h2></div>
+<div id="cabos" class="aba"><h2>Cabos</h2></div>
+<div id="sargentos" class="aba"><h2>Sargentos</h2></div>
+<div id="tenentes" class="aba"><h2>Tenentes</h2></div>
+<div id="capitaes" class="aba"><h2>Capitães</h2></div>
+<div id="coroneis" class="aba"><h2>Coronéis</h2></div>
+<div id="generais" class="aba"><h2>Generais</h2></div>
 
 </main>
 
-<script src="script.js"></script>
+<script>
+function abrirAba(id){
+document.querySelectorAll(".aba").forEach(a=>a.classList.remove("ativa"))
+document.getElementById(id).classList.add("ativa")
+}
+</script>
+
 </body>
 </html>
