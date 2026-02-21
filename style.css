@@ -6,155 +6,166 @@
 }
 
 body {
-  background: #0a0a0a;
+  background: #0b0f17;
   color: #fff;
 }
 
-/* NAVBAR */
-.navbar {
-  position: fixed;
-  width: 100%;
-  padding: 20px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-}
+/* ================= LOGIN ================= */
 
-.logo {
-  font-weight: 700;
-  font-size: 20px;
-}
-
-.logo span {
-  color: gold;
-}
-
-nav a {
-  margin-left: 30px;
-  text-decoration: none;
-  color: #ccc;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: gold;
-}
-
-/* HERO */
-.hero {
+.login-body {
   height: 100vh;
-  background: url('images/ROTA_98.jpg') center/cover no-repeat;
+  background: linear-gradient(135deg, #0b0f17, #121826);
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  position: relative;
 }
 
-.overlay {
-  position: absolute;
+.login-container {
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
+  max-width: 400px;
 }
 
-.hero-content {
-  position: relative;
-  max-width: 700px;
+.login-box {
+  background: rgba(20, 25, 35, 0.95);
+  padding: 50px 40px;
+  border-radius: 15px;
+  border: 1px solid #1f2937;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  text-align: center;
 }
 
-.hero h1 {
-  font-size: 40px;
-  margin-bottom: 20px;
+.login-box h1 {
+  color: #d4af37;
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
-.hero p {
-  color: #ccc;
+.login-box p {
+  font-size: 13px;
+  color: #9ca3af;
   margin-bottom: 30px;
 }
 
-.btn {
-  padding: 12px 30px;
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: #d4af37;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #d4af37, #b8860b);
   border: none;
-  background: gold;
-  color: black;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  border-radius: 30px;
   transition: 0.3s;
 }
 
-.btn:hover {
+.login-box button:hover {
+  opacity: 0.9;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: #111827;
+  border-bottom: 1px solid #1f2937;
+}
+
+.logo {
+  font-weight: 600;
+}
+
+.logo span {
+  color: #d4af37;
+}
+
+.logout-btn {
+  padding: 8px 15px;
+  background: transparent;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
   background: #d4af37;
+  color: #000;
 }
 
-/* STATS */
-.stats {
+/* ================= DASHBOARD ================= */
+
+.dashboard {
+  padding: 60px;
+}
+
+.stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
-  padding: 80px 60px;
-  text-align: center;
+  margin-bottom: 60px;
 }
 
-.card {
-  background: #111;
+.stat-card {
+  background: #111827;
   padding: 40px;
-  border-radius: 12px;
-  border: 1px solid #222;
+  border-radius: 15px;
+  border: 1px solid #1f2937;
+  text-align: center;
   transition: 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  border-color: gold;
+.stat-card:hover {
+  transform: translateY(-8px);
+  border-color: #d4af37;
+  box-shadow: 0 10px 25px rgba(212,175,55,0.2);
 }
 
-.card h2 {
-  font-size: 36px;
-  color: gold;
+.stat-card h2 {
+  font-size: 38px;
+  color: #d4af37;
 }
 
-/* GALLERY */
-.gallery {
-  padding: 60px;
-  text-align: center;
+.stat-card p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #9ca3af;
 }
 
-.gallery h2 {
-  margin-bottom: 40px;
+/* ================= CHART ================= */
+
+.chart-container {
+  background: #111827;
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid #1f2937;
 }
 
-.slider {
-  position: relative;
-  max-width: 900px;
-  margin: auto;
-  overflow: hidden;
-}
+/* ================= RESPONSIVO ================= */
 
-.slide {
-  width: 100%;
-  display: none;
-  border-radius: 10px;
-}
+@media(max-width: 768px) {
+  .navbar {
+    padding: 20px;
+  }
 
-.slide.active {
-  display: block;
-  animation: fade 1s ease-in-out;
-}
-
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-/* FOOTER */
-footer {
-  padding: 20px;
-  text-align: center;
-  background: #111;
-  color: #777;
+  .dashboard {
+    padding: 30px;
+  }
 }
