@@ -1,37 +1,141 @@
-body{
-margin:0;
-font-family:Arial;
-background:#0b0f14;
-color:white;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #ddd;
 }
 
-header{
-background:#111827;
-padding:15px;
-display:flex;
-justify-content:space-between;
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
 }
 
-nav{
-background:#1f2937;
-padding:10px;
-display:flex;
-gap:10px;
+.topo {
+  background: #8b0000;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-size: 13px;
+  letter-spacing: 2px;
 }
 
-button{
-padding:10px;
-border:none;
-border-radius:6px;
-background:#374151;
-color:white;
-cursor:pointer;
+header {
+  border-bottom: 4px solid #aa0000;
+  padding: 20px 0;
 }
 
-button:hover{
-background:#4b5563;
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.pagina{
-display:none;
+header h1 {
+  color: #ff0000;
+  font-size: 24px;
+  letter-spacing: 3px;
+}
+
+header p {
+  color: #aaa;
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+.brasao {
+  font-size: 40px;
+  color: #ff0000;
+}
+
+.lema {
+  background: #aa0000;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+nav {
+  background: #111;
+  border-bottom: 2px solid #aa0000;
+  text-align: center;
+  padding: 10px;
+}
+
+nav button {
+  background: #222;
+  border: 1px solid #aa0000;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+nav button:hover,
+nav button.active {
+  background: #aa0000;
+}
+
+h2 {
+  color: #ff0000;
+  text-transform: uppercase;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #111;
+  border: 1px solid #aa0000;
+  padding: 20px;
+  flex: 1;
+  min-width: 250px;
+}
+
+.galeria {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.foto {
+  background: #111;
+  border: 1px solid #aa0000;
+  width: 300px;
+}
+
+.foto img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.foto span {
+  display: block;
+  padding: 10px;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.aba {
+  display: none;
+}
+
+.aba.ativa {
+  display: block;
+}
+
+footer {
+  background: #8b0000;
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-top: 40px;
 }
