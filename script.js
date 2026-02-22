@@ -1,4 +1,5 @@
 function mudarAba(id, botao) {
+
   document.querySelectorAll('.aba').forEach(sec => {
     sec.classList.remove('ativa');
   });
@@ -11,11 +12,4 @@ function mudarAba(id, botao) {
   botao.classList.add('active');
 }
 
-window.onload = function() {
-  setTimeout(function(){
-    document.getElementById("loading").style.opacity = "0";
-    setTimeout(() => {
-      document.getElementById("loading").style.display = "none";
-    }, 500);
-  }, 2500);
-};
+/* LOADING SE
