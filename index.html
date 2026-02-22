@@ -1,71 +1,93 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Shield } from "lucide-react";
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>ROTA - Portal Institucional</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-export default function RotaInstitucional() {
-  const [tab, setTab] = useState("inicio");
+  <!-- TOPO -->
+  <div class="topo">
+    GOVERNO DO ESTADO • POLÍCIA MILITAR DO ESTADO DE SÃO PAULO
+  </div>
 
-  const fotos = [
-    { src: "/images/rota_21_lucca.jpg", titulo: "ROTA 21 - LUCCA" },
-    { src: "/images/rota_54.jpg", titulo: "ROTA 54" },
-    { src: "/images/ROTA_98.jpg", titulo: "ROTA 98" },
-  ];
-
-  const Botao = ({ item }) => (
-    <button
-      onClick={() => setTab(item)}
-      className={`px-6 py-2 font-semibold tracking-wider border transition ${
-        tab === item
-          ? "bg-red-700 border-red-700"
-          : "bg-zinc-800 border-red-800 hover:bg-zinc-700"
-      }`}
-    >
-      {item.toUpperCase()}
-    </button>
-  );
-
-  return (
-    <div className="min-h-screen bg-black text-gray-200 font-sans">
-
-      {/* TOPO */}
-      <div className="bg-red-900 text-white text-sm text-center py-2 tracking-widest">
-        GOVERNO DO ESTADO • POLÍCIA MILITAR DO ESTADO DE SÃO PAULO
+  <!-- HEADER -->
+  <header>
+    <div class="container header-content">
+      <div>
+        <h1>RONDAS OSTENSIVAS TOBIAS DE AGUIAR</h1>
+        <p>Polícia Militar do Estado de São Paulo</p>
       </div>
+      <div class="brasao">🛡️</div>
+    </div>
+  </header>
 
-      {/* HEADER */}
-      <header className="border-b-4 border-red-700 bg-black">
-        <div className="max-w-7xl mx-auto p-6 flex justify-between items-center">
-          <div>
-            <h1 className="text-3xl font-bold tracking-widest text-red-600 uppercase">
-              RONDAS OSTENSIVAS TOBIAS DE AGUIAR
-            </h1>
-            <p className="text-sm tracking-[0.4em] text-gray-400 uppercase">
-              Polícia Militar do Estado de São Paulo
-            </p>
-          </div>
-          <Shield size={42} className="text-red-600" />
+  <!-- LEMA -->
+  <div class="lema">
+    "DISCIPLINA • HONRA • CORAGEM"
+  </div>
+
+  <!-- MENU -->
+  <nav>
+    <button onclick="mudarAba('inicio')" class="active">INÍCIO</button>
+    <button onclick="mudarAba('missao')">MISSÃO</button>
+    <button onclick="mudarAba('galeria')">GALERIA</button>
+  </nav>
+
+  <!-- CONTEÚDO -->
+  <main class="container">
+
+    <section id="inicio" class="aba ativa">
+      <h2>Apresentação Institucional</h2>
+      <p>
+        Unidade especializada de policiamento ostensivo da Polícia Militar do Estado de São Paulo,
+        com atuação estratégica e apoio às demais unidades operacionais.
+      </p>
+    </section>
+
+    <section id="missao" class="aba">
+      <div class="cards">
+        <div class="card">
+          <h3>Missão</h3>
+          <p>Executar policiamento ostensivo especializado preservando a ordem pública.</p>
         </div>
-      </header>
-
-      {/* LEMA */}
-      <div className="bg-red-800 text-center py-3 text-white font-semibold tracking-widest">
-        "DISCIPLINA • HONRA • CORAGEM"
+        <div class="card">
+          <h3>Visão</h3>
+          <p>Ser referência nacional em policiamento tático urbano.</p>
+        </div>
+        <div class="card">
+          <h3>Valores</h3>
+          <p>Hierarquia, disciplina, ética e compromisso com a sociedade.</p>
+        </div>
       </div>
+    </section>
 
-      {/* MENU */}
-      <nav className="bg-zinc-900 border-b border-red-800">
-        <div className="max-w-7xl mx-auto flex gap-4 p-4 flex-wrap">
-          <Botao item="inicio" />
-          <Botao item="missao" />
-          <Botao item="galeria" />
+    <section id="galeria" class="aba">
+      <h2>Registros Operacionais</h2>
+      <div class="galeria">
+        <div class="foto">
+          <img src="images/rota_21_lucca.jpg" alt="ROTA 21">
+          <span>ROTA 21 - LUCCA</span>
         </div>
-      </nav>
+        <div class="foto">
+          <img src="images/rota_54.jpg" alt="ROTA 54">
+          <span>ROTA 54</span>
+        </div>
+        <div class="foto">
+          <img src="images/ROTA_98.jpg" alt="ROTA 98">
+          <span>ROTA 98</span>
+        </div>
+      </div>
+    </section>
 
-      <main className="max-w-7xl mx-auto p-10 space-y-12">
+  </main>
 
-        {tab === "inicio" && (
-          <div className="bg-zinc-900 border border-red-800 p-8 shadow-xl">
-            <h2 className="text-2xl font-bold text-red-600 uppercase mb-4">
-              Apresentação Institucional
-            </h2>
-            <p className="text-gray-300
+  <!-- RODAPÉ -->
+  <footer>
+    POLÍCIA MILITAR DO ESTADO DE SÃO PAULO • ROTA • PÁGINA INSTITUCIONAL DEMONSTRATIVA
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
