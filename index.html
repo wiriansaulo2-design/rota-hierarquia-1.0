@@ -5,18 +5,19 @@
   <title>ROTA - Portal Institucional</title>
   <link rel="stylesheet" href="style.css">
 </head>
-  <div id="loading">
-  <div class="spinner"></div>
-  <div class="loading-text">INICIALIZANDO SISTEMA ROTA...</div>
-</div>
 <body>
+
+  <!-- TELA DE LOADING -->
+  <div id="loading">
+    <div class="spinner"></div>
+    <div class="loading-text">INICIALIZANDO SISTEMA ROTA...</div>
+  </div>
 
   <!-- TOPO -->
   <div class="topo">
     GOVERNO DO ESTADO • POLÍCIA MILITAR DO ESTADO DE SÃO PAULO
   </div>
 
-  <!-- HEADER -->
   <header>
     <div class="container header-content">
       <div>
@@ -27,26 +28,22 @@
     </div>
   </header>
 
-  <!-- LEMA -->
   <div class="lema">
     "DISCIPLINA • HONRA • CORAGEM"
   </div>
 
-  <!-- MENU -->
   <nav>
-    <button onclick="mudarAba('inicio')" class="active">INÍCIO</button>
-    <button onclick="mudarAba('missao')">MISSÃO</button>
-    <button onclick="mudarAba('galeria')">GALERIA</button>
+    <button onclick="mudarAba('inicio', this)" class="active">INÍCIO</button>
+    <button onclick="mudarAba('missao', this)">MISSÃO</button>
+    <button onclick="mudarAba('galeria', this)">GALERIA</button>
   </nav>
 
-  <!-- CONTEÚDO -->
   <main class="container">
 
     <section id="inicio" class="aba ativa">
       <h2>Apresentação Institucional</h2>
       <p>
-        Unidade especializada de policiamento ostensivo da Polícia Militar do Estado de São Paulo,
-        com atuação estratégica e apoio às demais unidades operacionais.
+        Unidade especializada de policiamento ostensivo da Polícia Militar do Estado de São Paulo.
       </p>
     </section>
 
@@ -54,7 +51,7 @@
       <div class="cards">
         <div class="card">
           <h3>Missão</h3>
-          <p>Executar policiamento ostensivo especializado preservando a ordem pública.</p>
+          <p>Executar policiamento ostensivo especializado.</p>
         </div>
         <div class="card">
           <h3>Visão</h3>
@@ -62,7 +59,7 @@
         </div>
         <div class="card">
           <h3>Valores</h3>
-          <p>Hierarquia, disciplina, ética e compromisso com a sociedade.</p>
+          <p>Hierarquia, disciplina e compromisso com a sociedade.</p>
         </div>
       </div>
     </section>
@@ -71,15 +68,15 @@
       <h2>Registros Operacionais</h2>
       <div class="galeria">
         <div class="foto">
-          <img src="images/rota_21_lucca.jpg" alt="ROTA 21">
+          <img src="images/rota_21_lucca.jpg">
           <span>ROTA 21 - LUCCA</span>
         </div>
         <div class="foto">
-          <img src="images/rota_54.jpg" alt="ROTA 54">
+          <img src="images/rota_54.jpg">
           <span>ROTA 54</span>
         </div>
         <div class="foto">
-          <img src="images/ROTA_98.jpg" alt="ROTA 98">
+          <img src="images/ROTA_98.jpg">
           <span>ROTA 98</span>
         </div>
       </div>
@@ -87,9 +84,8 @@
 
   </main>
 
-  <!-- RODAPÉ -->
   <footer>
-    POLÍCIA MILITAR DO ESTADO DE SÃO PAULO • ROTA • PÁGINA INSTITUCIONAL DEMONSTRATIVA
+    POLÍCIA MILITAR DO ESTADO DE SÃO PAULO • ROTA • PÁGINA DEMONSTRATIVA
   </footer>
 
   <script src="script.js"></script>
