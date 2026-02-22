@@ -1,18 +1,23 @@
-function mudarAba(id) {
+function mudarAba(id, botao) {
   const abas = document.querySelectorAll('.aba');
   const botoes = document.querySelectorAll('nav button');
 
-  abas.forEach(aba => aba.classList.remove('ativa'));
-  botoes.forEach(btn => btn.classList.remove('active'));
+  abas.forEach(aba => {
+    aba.classList.remove('ativa');
+  });
+
+  botoes.forEach(btn => {
+    btn.classList.remove('active');
+  });
 
   document.getElementById(id).classList.add('ativa');
-
-  event.target.classList.add('active');
+  botao.classList.add('active');
 }
 
-// Garantir que loading desapareça corretamente
+// Loading seguro
 window.addEventListener("load", function () {
+  const loading = document.getElementById("loading");
   setTimeout(() => {
-    document.getElementById("loading").style.display = "none";
-  }, 3000);
+    loading.style.display = "none";
+  }, 2000);
 });
