@@ -2,61 +2,64 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>ROTA - Portal Institucional</title>
+  <title>ROTA - Sistema Institucional</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- TELA INICIAL -->
 <div id="loading">
-  <div class="loading-box">
-    <div>ROTA - SISTEMA OPERACIONAL</div>
-    <div class="loading-text">INICIALIZANDO...</div>
-    <div class="barra"><span></span></div>
+  <div class="painel">
+    <h2>ROTA - SISTEMA OPERACIONAL</h2>
+    <p class="digitando">Inicializando protocolos...</p>
+    <div class="barra">
+      <div class="progresso"></div>
+    </div>
   </div>
 </div>
 
-  <div class="topo">
-    GOVERNO DO ESTADO • POLÍCIA MILITAR DO ESTADO DE SÃO PAULO
-  </div>
+<div class="topo">
+  GOVERNO DO ESTADO • POLÍCIA MILITAR DO ESTADO DE SÃO PAULO
+</div>
 
-  <header>
-    <h1>RONDAS OSTENSIVAS TOBIAS DE AGUIAR</h1>
-    <p>Polícia Militar do Estado de São Paulo</p>
-  </header>
+<header>
+  <h1>RONDAS OSTENSIVAS TOBIAS DE AGUIAR</h1>
+  <p>Polícia Militar do Estado de São Paulo</p>
+</header>
 
-  <div class="lema">
-    "DISCIPLINA • HONRA • CORAGEM"
-  </div>
+<div class="lema">
+  "DISCIPLINA • HONRA • CORAGEM"
+</div>
 
-  <nav>
-    <button onclick="mudarAba('inicio', this)" class="active">INÍCIO</button>
-    <button onclick="mudarAba('missao', this)">MISSÃO</button>
-    <button onclick="mudarAba('galeria', this)">GALERIA</button>
-  </nav>
+<nav>
+  <button onclick="mudarAba('inicio', this)" class="active">INÍCIO</button>
+  <button onclick="mudarAba('missao', this)">MISSÃO</button>
+  <button onclick="mudarAba('galeria', this)">GALERIA</button>
+</nav>
 
-  <main>
+<main>
 
-    <section id="inicio" class="aba ativa">
-      <h2>Apresentação Institucional</h2>
-      <p>Unidade especializada de policiamento ostensivo.</p>
-    </section>
+  <section id="inicio" class="aba ativa">
+    <h2>Apresentação Institucional</h2>
+    <p>Unidade especializada de policiamento ostensivo.</p>
+  </section>
 
-    <section id="missao" class="aba">
-      <h2>Missão</h2>
-      <p>Executar policiamento ostensivo especializado.</p>
-    </section>
+  <section id="missao" class="aba">
+    <h2>Missão</h2>
+    <p>Executar policiamento ostensivo especializado.</p>
+  </section>
 
-    <section id="galeria" class="aba">
-      <h2>Galeria</h2>
-      <img src="images/rota_21_lucca.jpg" width="300">
-    </section>
+  <section id="galeria" class="aba">
+    <h2>Galeria Operacional</h2>
+    <p>Registros institucionais.</p>
+  </section>
 
-  </main>
+</main>
 
-  <footer>
-    POLÍCIA MILITAR DO ESTADO DE SÃO PAULO • ROTA
-  </footer>
+<footer>
+  POLÍCIA MILITAR DO ESTADO DE SÃO PAULO • ROTA • PÁGINA DEMONSTRATIVA
+</footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
