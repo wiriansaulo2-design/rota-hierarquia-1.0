@@ -9,3 +9,10 @@ function mudarAba(id) {
 
   event.target.classList.add('active');
 }
+
+// Garantir que loading desapareça corretamente
+window.addEventListener("load", function () {
+  setTimeout(() => {
+    document.getElementById("loading").style.display = "none";
+  }, 3000);
+});
